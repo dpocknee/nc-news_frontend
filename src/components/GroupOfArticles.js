@@ -66,6 +66,9 @@ class GroupOfArticles extends Component {
   render() {
     return (
       <div>
+        <header>
+          <h1>Articles</h1>
+        </header>
         {this.state.articles.map((article, index) => (
           <Article key={`article${index}`} articleInfo={article} />
         ))}
