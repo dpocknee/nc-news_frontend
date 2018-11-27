@@ -11,3 +11,8 @@ export const getInfo = async infoType => {
   const { data } = await axios.get(`${BASE_URL}/${infoType}`);
   return data;
 };
+
+export const getArticlesByTopic = async topicSlug => {
+  const { data } = await axios.get(`${BASE_URL}/topics/${topicSlug}/articles`);
+  return data;
+};

@@ -6,15 +6,14 @@ import User from './User';
 import { Router } from '@reach/router';
 
 class MainWindow extends Component {
-  state = {
-    
-  };
+  state = {};
   render() {
     return (
       <main>
         <Router>
           <GroupOfArticles path="/" />
           <GroupOfArticles path="/articles" />
+          <GroupOfArticles path="/topics/:topic_slug/articles" />
           <IndividualArticle path="/articles/:article_id" />
           <User path="/users/:username" />
         </Router>

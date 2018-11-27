@@ -24,8 +24,8 @@ class Navbar extends Component {
         <li>Topics</li>
         <ul>
           {this.state.topics.map(topic => (
-            <li>
-              <Link to={`/articles/${topic.slug}`}>{topic.title}</Link>
+            <li key={`navTopics${topic.slug}`}>
+              <Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link>
             </li>
           ))}
         </ul>
@@ -80,11 +80,9 @@ class Navbar extends Component {
     );
   }
   componentDidMount() {
-    console.log('WORKING?');
     api
       .getInfo('topics')
       .then(topics => {
-        console.log('THESE ARE YOUR TOPICS:', topics);
         this.setState({ topics });
       })
       .catch(console.log);
@@ -95,7 +93,6 @@ class Navbar extends Component {
   };
 
   handleCheckbox = event => {
-    console.log(event.target.name);
     const theBox = {
       name: event.target.name,
       checked: event.target.checked
