@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import GroupOfComments from './GroupOfComments';
+import '../css/User.css';
 
 class User extends Component {
   state = {
@@ -13,7 +15,16 @@ class User extends Component {
     }
   };
   render() {
-    return <div />;
+    const user = this.state.user;
+    return (
+      <section className="userPage">
+        <h1>Username: {user.username}</h1>
+        <h2>Name: {user.name}</h2>
+        <p>Maybe stick some info here about posting frequency etc.</p>
+        <h3>List of posts</h3>
+        <GroupOfComments />
+      </section>
+    );
   }
 }
 

@@ -78,6 +78,7 @@ class GroupOfComments extends Component {
     ]
   };
   render() {
+    // this.props.commentId should be an object containing the object parameters to match in the list of comments.
     return (
       <section>
         {this.state.comments.map((comment, index) => (

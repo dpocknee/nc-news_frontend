@@ -6,7 +6,9 @@ import User from './User';
 import { Router } from '@reach/router';
 
 class MainWindow extends Component {
-  state = {};
+  state = {
+    
+  };
   render() {
     return (
       <main>
