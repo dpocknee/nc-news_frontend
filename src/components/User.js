@@ -18,9 +18,16 @@ class User extends Component {
     const user = this.state.user;
     return (
       <section className="userPage">
-        <h1>Username: {user.username}</h1>
-        <h2>Name: {user.name}</h2>
-        <p>Maybe stick some info here about posting frequency etc.</p>
+        <header>
+          <figure>
+            <img src={user.avatar_url} alt={`Avatar for ${user.username}`} />
+          </figure>
+          <section>
+            <h1>Username: {user.username}</h1>
+            <h2>Name: {user.name}</h2>
+            <p>Maybe stick some info here about posting frequency etc.</p>
+          </section>
+        </header>
         <h3>List of posts</h3>
         <GroupOfComments />
       </section>
