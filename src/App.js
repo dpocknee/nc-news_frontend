@@ -4,6 +4,7 @@ import './css/Article.css';
 import './css/Comment.css';
 import Navbar from './components/Navbar';
 import MainWindow from './components/MainWindow';
+import getTopics from './api';
 
 class App extends Component {
   state = {
