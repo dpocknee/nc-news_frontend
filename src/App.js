@@ -4,7 +4,6 @@ import './css/Article.css';
 import './css/Comment.css';
 import Navbar from './components/Navbar';
 import MainWindow from './components/MainWindow';
-import getTopics from './api';
 
 class App extends Component {
   state = {
@@ -13,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar topics={this.state.topics} searchHandler={this.searchHandler} />
+        <Navbar searchHandler={this.searchHandler} />
         <MainWindow />
       </div>
     );

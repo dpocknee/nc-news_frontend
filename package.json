@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "axios": "^0.18.0",
     "date-fns": "^1.29.0",
     "datejs": "^1.0.0-rc3",
     "react": "^16.6.3",

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Toptitle from './Toptitle';
 import { Link } from '@reach/router';
+import * as api from '../api';
 
 class Navbar extends Component {
   state = {
     searchbox: '',
-    searchParameters: []
+    searchParameters: [],
+    topics: []
   };
   render() {
     return (
@@ -21,11 +23,11 @@ class Navbar extends Component {
         </ul>
         <li>Topics</li>
         <ul>
-          <li>
-            <Link to="/articles/football">Football</Link>
-          </li>
-          <li>Coding</li>
-          <li>etc.</li>
+          {this.state.topics.map(topic => (
+            <li>
+              <Link to={`/articles/${topic.slug}`}>{topic.title}</Link>
+            </li>
+          ))}
         </ul>
         <li>
           <Link to="/users">Users</Link>
@@ -77,9 +79,21 @@ class Navbar extends Component {
       </nav>
     );
   }
+  componentDidMount() {
+    console.log('WORKING?');
+    api
+      .getTopics()
+      .then(topics => {
+        console.log('THESE ARE YOUR TOPICS:', topics);
+        this.setState({ topics });
+      })
+      .catch(console.log);
+  }
+
   handleTextInput = event => {
     this.setState({ searchbox: event.target.value });
   };
+
   handleCheckbox = event => {
     console.log(event.target.name);
     const theBox = {
