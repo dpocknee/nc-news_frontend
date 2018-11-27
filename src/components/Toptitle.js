@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/Navbar.css';
 
 const Toptitle = props => {
   return (
