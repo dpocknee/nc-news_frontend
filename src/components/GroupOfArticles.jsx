@@ -11,7 +11,16 @@ class GroupOfArticles extends Component {
   };
   render() {
     const filteredArticles = this.filterer(this.state.articles);
-    console.log(filteredArticles);
+    const textInput = this.props.searchInfo
+      ? this.props.searchInfo.searchInfo.searchbox
+        ? this.props.searchInfo.searchInfo.searchbox
+        : false
+      : false;
+    const searchResults = textInput
+      ? `${
+          filteredArticles.length
+        } articles found for search query "${textInput}".`
+      : `${filteredArticles.length} articles found.`;
     return (
       <div>
         <header>
@@ -20,6 +29,7 @@ class GroupOfArticles extends Component {
             Articles
           </h1>
         </header>
+        {textInput && <p>{searchResults}</p>}
         {this.state.isLoading && <p>... loading articles ...</p>}
         {!this.state.isLoading &&
           filteredArticles.map((article, index) => (
@@ -68,7 +78,7 @@ class GroupOfArticles extends Component {
       : /[\w\W]+/;
     console.log('searchBox', this.props.searchInfo);
     return articles.filter(article => {
-      const regex = new RegExp(searchBox);
+      const regex = new RegExp(searchBox, 'gi');
       return regex.test(article.body);
     });
   };
