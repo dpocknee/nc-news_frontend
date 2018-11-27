@@ -10,6 +10,8 @@ class GroupOfArticles extends Component {
     isLoading: true
   };
   render() {
+    const filteredArticles = this.filterer(this.state.articles);
+    console.log(filteredArticles);
     return (
       <div>
         <header>
@@ -20,7 +22,7 @@ class GroupOfArticles extends Component {
         </header>
         {this.state.isLoading && <p>... loading articles ...</p>}
         {!this.state.isLoading &&
-          this.state.articles.map((article, index) => (
+          filteredArticles.map((article, index) => (
             <Article key={`article${index}`} articleInfo={article} />
           ))}
       </div>
@@ -33,7 +35,8 @@ class GroupOfArticles extends Component {
     api
       .getInfo(typeOfInfo)
       .then(articles => {
-        this.setState({ articles, isLoading: false });
+        const filteredArticles = this.filterer(articles);
+        this.setState({ articles: filteredArticles, isLoading: false });
       })
       .catch(console.log);
   }
@@ -51,12 +54,24 @@ class GroupOfArticles extends Component {
         .getInfo(typeOfInfo)
         .then(articles => {
           if (!isEqual(prevState.articles, articles)) {
-            this.setState({ articles, isLoading: false });
+            this.setState({
+              isLoading: false
+            });
           }
         })
         .catch(console.log);
     }
   }
+  filterer = articles => {
+    const searchBox = this.props.searchInfo
+      ? this.props.searchInfo.searchInfo.searchbox
+      : /[\w\W]+/;
+    console.log('searchBox', this.props.searchInfo);
+    return articles.filter(article => {
+      const regex = new RegExp(searchBox);
+      return regex.test(article.body);
+    });
+  };
 }
 
 const capitalizer = word => {

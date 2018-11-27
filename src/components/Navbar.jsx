@@ -43,7 +43,7 @@ class Navbar extends Component {
           <br />
           <input
             type="checkbox"
-            name="articleSearch"
+            name="articles"
             id="articleSearch"
             onChange={this.handleCheckbox}
           />
@@ -51,7 +51,7 @@ class Navbar extends Component {
           <br />
           <input
             type="checkbox"
-            name="commentsSearch"
+            name="comments"
             id="commentsSearch"
             onChange={this.handleCheckbox}
           />
@@ -59,7 +59,7 @@ class Navbar extends Component {
           <br />
           <input
             type="checkbox"
-            name="usersSearch"
+            name="users"
             id="usersSearch"
             onChange={this.handleCheckbox}
           />
@@ -68,7 +68,12 @@ class Navbar extends Component {
           <button
             type="submit"
             onClick={event => {
-              return this.props.searchHandler(event, this.state);
+              return this.props.searchHandler(event, {
+                searchInfo: {
+                  searchbox: this.state.searchbox,
+                  searchParameters: this.state.searchParameters
+                }
+              });
             }}
           >
             Search
