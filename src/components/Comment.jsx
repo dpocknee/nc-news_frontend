@@ -13,8 +13,11 @@ class Comment extends Component {
         <footer>
           <div>
             {' - '}
-            <Link to={`/users/${info.created_by}`}> {info.created_by}</Link> (
-            {format(info.created_at, 'DD-MM-YYYY')})
+            <Link to={`/users/${info.created_by.username}`}>
+              {' '}
+              {info.created_by.name}
+            </Link>{' '}
+            ({format(info.created_at, 'DD-MM-YYYY')})
           </div>
           <div className="voting">
             <div>Voteup</div>

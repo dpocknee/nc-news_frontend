@@ -13,7 +13,7 @@ class Article extends Component {
             <Link to={`/articles/${info._id}`}>{info.title}</Link>
           </h1>
           <h2>
-            <Link to={`/users/${info.created_by}`}>{info.created_by}</Link>
+            <Link to={`/users/${info.created_by.username}`}>{info.created_by.name}</Link>
           </h2>
           <h3>({format(info.created_at, 'DD-MM-YYYY HH:MM')})</h3>
         </header>

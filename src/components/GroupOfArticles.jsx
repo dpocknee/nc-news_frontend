@@ -27,35 +27,28 @@ class GroupOfArticles extends Component {
     );
   }
   componentDidMount() {
-    if (this.props.topic_slug) {
-      api.getArticlesByTopic(this.props.topic_slug).then(articles => {
+    const typeOfInfo = this.props.topic_slug
+      ? `topics/${this.props.topic_slug}`
+      : 'articles';
+    api
+      .getInfo(typeOfInfo)
+      .then(articles => {
         this.setState({ articles, isLoading: false });
-      });
-    } else {
-      api
-        .getInfo('articles')
-        .then(articles => {
-          this.setState({ articles, isLoading: false });
-        })
-        .catch(console.log);
-    }
+      })
+      .catch(console.log);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.topic_slug) {
-      // this.setState({ isLoading: true });
+    if (prevState.isLoading === false && this.props.topic_slug) {
+      this.setState({ isLoading: true });
+    }
+    if (this.props !== prevProps) {
+      const typeOfInfo =
+        this.props.topic_slug && this.props.topic_slug !== prevProps.topic_slug
+          ? `topics/${this.props.topic_slug}/articles`
+          : 'articles';
       api
-        .getArticlesByTopic(this.props.topic_slug)
-        .then(articles => {
-          if (!isEqual(prevState.articles, articles)) {
-            this.setState({ articles, isLoading: false });
-          }
-        })
-        .catch(console.log);
-    } else {
-      // this.setState({ isLoading: true });
-      api
-        .getInfo('articles')
+        .getInfo(typeOfInfo)
         .then(articles => {
           if (!isEqual(prevState.articles, articles)) {
             this.setState({ articles, isLoading: false });
