@@ -82,7 +82,7 @@ class Navbar extends Component {
   componentDidMount() {
     console.log('WORKING?');
     api
-      .getTopics()
+      .getInfo('topics')
       .then(topics => {
         console.log('THESE ARE YOUR TOPICS:', topics);
         this.setState({ topics });
