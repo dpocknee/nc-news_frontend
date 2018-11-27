@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import GroupOfComments from './GroupOfComments';
 import '../css/User.css';
+import * as api from '../api';
 
 class User extends Component {
   state = {
-    user: {
-      _id: '5be8440b17324b27109088cd',
-      username: 'tickle122',
-      name: 'Tom Tickle',
-      avatar_url:
-        'https://www.spiritsurfers.net/monastery/wp-content/uploads/_41500270_mrtickle.jpg',
-      __v: 0
-    }
+    user: {}
   };
   render() {
     const user = this.state.user;
@@ -32,6 +26,15 @@ class User extends Component {
         <GroupOfComments />
       </section>
     );
+  }
+  componentDidMount() {
+    const typeOfInfo = `users/${this.props.username}`;
+    api
+      .getInfo(typeOfInfo)
+      .then(user => {
+        this.setState({ user, isLoading: false });
+      })
+      .catch(console.log);
   }
 }
 
