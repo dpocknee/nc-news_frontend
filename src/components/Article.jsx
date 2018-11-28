@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { format } from 'date-fns';
 import * as api from '../api';
+import Voter from './Voter';
 
 class Article extends Component {
   render() {
@@ -22,19 +23,7 @@ class Article extends Component {
         </header>
         <section>{info.body}</section>
         <footer>
-          <div>Votes: {info.votes}</div>
-          <div className="voting">
-            <div>
-              <Link to="/" onClick={event => this.voteHandler('up')}>
-                Voteup
-              </Link>
-            </div>
-            <div>
-              <Link to="/" onClick={event => this.voteHandler('down')}>
-                Votedown
-              </Link>
-            </div>
-          </div>
+          <Voter type="articles" componentInfo={info} />
         </footer>
       </article>
     );

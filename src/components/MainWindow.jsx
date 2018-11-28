@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import GroupOfArticles from './GroupOfArticles';
 import IndividualArticle from './IndividualArticle';
 import User from './User';
+import Login from './Login';
 import { Router } from '@reach/router';
 
 class MainWindow extends Component {
@@ -23,6 +24,7 @@ class MainWindow extends Component {
           />
           <IndividualArticle path="/articles/:article_id" />
           <User path="/users/:username" />
+          <Login path="/login" />
         </Router>
       </main>
     );
