@@ -54,15 +54,16 @@ class Voter extends Component {
       )
       .catch(console.log);
   };
+  componentDidMount() {
+    const votes = this.props.componentInfo.votes;
+    this.setState({ optimisticVote: votes });
+  }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.optimisticVote !== this.props.componentInfo.votes) {
-      if (prevState.voteMod !== 0 && !isEqual(prevProps, this.props)) {
-        this.setState(state => {
-          return {
-            optimisticVote: state.voteMod + state.optimisticVote
-          };
-        });
-      }
+    const currentVoteNum = this.props.componentInfo.votes;
+    const oldVoteNum = prevProps.componentInfo.votes;
+    if (currentVoteNum !== oldVoteNum) {
+      //there has been a change in props
+      this.setState({ optimisticVote: currentVoteNum, voteMod: 0 });
     }
   }
 }
