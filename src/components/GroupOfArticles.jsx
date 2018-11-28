@@ -39,23 +39,25 @@ class GroupOfArticles extends Component {
     );
   }
   componentDidMount() {
+    console.log('mounting');
     const typeOfInfo = this.props.topic_slug
-      ? `topics/${this.props.topic_slug}`
+      ? `topics/${this.props.topic_slug}/articles`
       : 'articles';
+    console.log(typeOfInfo);
     api
       .getInfo(typeOfInfo)
       .then(articles => {
-        const filteredArticles = this.filterer(articles);
-        this.setState({ articles: filteredArticles, isLoading: false });
+        this.setState({ articles, isLoading: false });
       })
       .catch(console.log);
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log('updating');
     if (prevState.isLoading === false && this.props.topic_slug) {
       this.setState({ isLoading: true });
     }
-    if (this.props !== prevProps) {
+    if (!isEqual(this.props, prevProps)) {
       const typeOfInfo =
         this.props.topic_slug && this.props.topic_slug !== prevProps.topic_slug
           ? `topics/${this.props.topic_slug}/articles`
@@ -65,6 +67,7 @@ class GroupOfArticles extends Component {
         .then(articles => {
           if (!isEqual(prevState.articles, articles)) {
             this.setState({
+              articles,
               isLoading: false
             });
           }
@@ -76,7 +79,7 @@ class GroupOfArticles extends Component {
     const searchBox = this.props.searchInfo
       ? this.props.searchInfo.searchInfo.searchbox
       : /[\w\W]+/;
-    console.log('searchBox', this.props.searchInfo);
+    console.log('searchBox', searchBox);
     return articles.filter(article => {
       const regex = new RegExp(searchBox, 'gi');
       return regex.test(article.body);

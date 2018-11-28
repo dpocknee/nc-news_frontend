@@ -32,6 +32,9 @@ class Navbar extends Component {
         <li>
           <Link to="/users">Users</Link>
         </li>
+        <ul>
+          <li>Login</li>
+          </ul>
         <form>
           <h3>Search:</h3>
           <input
