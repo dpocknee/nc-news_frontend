@@ -11,25 +11,29 @@ class Voter extends Component {
     optimisticVote: this.props.componentInfo.votes
   };
   render() {
-    const size = this.props.type === 'articles' ? 'fa-2x' : '';
+    const size = this.props.type === 'articles' ? 'fa-2x' : 'fa-2x';
     return (
-      <div>
-        {this.state.voteMod >= 1 ? (
-          <i className={`fas fa-arrow-alt-circle-up ${size} votingDisabled`} />
-        ) : (
-          <Link to="" onClick={event => this.voteHandler('up')}>
-            <i className={`fas fa-arrow-alt-circle-up ${size}votingAble`} />
-          </Link>
-        )}
-        {this.state.voteMod <= -1 ? (
-          <i
-            className={`fas fa-arrow-alt-circle-down ${size} votingDisabled`}
-          />
-        ) : (
-          <Link to="" onClick={event => this.voteHandler('down')}>
-            <i className={`fas fa-arrow-alt-circle-down ${size}votingAble`} />
-          </Link>
-        )}
+      <div className="votingAlignment">
+        <div className="votingBlock">
+          {this.state.voteMod >= 1 ? (
+            <i
+              className={`fas fa-arrow-alt-circle-up ${size} votingDisabledUp`}
+            />
+          ) : (
+            <Link to="" onClick={event => this.voteHandler('up')}>
+              <i className={`fas fa-arrow-alt-circle-up ${size}votingAble`} />
+            </Link>
+          )}
+          {this.state.voteMod <= -1 ? (
+            <i
+              className={`fas fa-arrow-alt-circle-down ${size} votingDisabledDown`}
+            />
+          ) : (
+            <Link to="" onClick={event => this.voteHandler('down')}>
+              <i className={`fas fa-arrow-alt-circle-down ${size}votingAble`} />
+            </Link>
+          )}
+        </div>
         <div className="voteText">
           Votes: {this.state.optimisticVote + this.state.voteMod}
         </div>
@@ -42,8 +46,11 @@ class Voter extends Component {
       return { voteMod: state.voteMod + modifier };
     });
     api
-      .changeVotes(`/articles/${this.props.componentInfo._id}`, upOrDown)
-      .catch(console.log('articleschanged'));
+      .changeVotes(
+        `/${this.props.type}/${this.props.componentInfo._id}`,
+        upOrDown
+      )
+      .catch(console.log);
   };
   componentDidUpdate(prevProps, prevState) {
     if (prevState.optimisticVote !== this.props.componentInfo.votes) {

@@ -28,11 +28,6 @@ class Article extends Component {
       </article>
     );
   }
-  voteHandler = upOrDown => {
-    api
-      .changeVotes(`/articles/${this.props.articleInfo._id}`, upOrDown)
-      .catch(console.log('articleschanged'));
-  };
 }
 
 Article.propTypes = {};

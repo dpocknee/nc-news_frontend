@@ -39,11 +39,9 @@ class GroupOfArticles extends Component {
     );
   }
   componentDidMount() {
-    console.log('mounting');
     const typeOfInfo = this.props.topic_slug
       ? `topics/${this.props.topic_slug}/articles`
       : 'articles';
-    console.log(typeOfInfo);
     api
       .getInfo(typeOfInfo)
       .then(articles => {
@@ -53,7 +51,6 @@ class GroupOfArticles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('updating');
     if (prevState.isLoading === false && this.props.topic_slug) {
       this.setState({ isLoading: true });
     }
@@ -79,7 +76,6 @@ class GroupOfArticles extends Component {
     const searchBox = this.props.searchInfo
       ? this.props.searchInfo.searchInfo.searchbox
       : /[\w\W]+/;
-    console.log('searchBox', searchBox);
     return articles.filter(article => {
       const regex = new RegExp(searchBox, 'gi');
       return regex.test(article.body);

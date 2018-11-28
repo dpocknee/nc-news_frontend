@@ -2,6 +2,22 @@
   color: blue;
 }
 
-.votingDisabled {
+.votingDisabledUp {
+  color: green;
+}
+
+.votingDisabledDown {
   color: red;
+}
+
+.votingBlock {
+  font-size: 20px;
+}
+
+.votingAlignment {
+  display: block;
+  width: 100px;
+  height: 50px;
+  text-align: right;
+  margin: 5px;
 }
