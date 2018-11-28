@@ -1,3 +1,7 @@
+.wholeAdder {
+  border: blue 1px dashed;
+  margin: 10px 5px 10px 5px;
+}
 .addarticle {
   display: flex;
   flex-direction: row;
@@ -23,4 +27,16 @@
 
 .addarticle i {
   margin-left: 5px;
+}
+
+.addArticleForm {
+  text-align: left;
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+
+.addArticleForm label {
+  vertical-align: top;
+  margin-right: 50px;
+  font-weight: bold;
 }
