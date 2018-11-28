@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Article from './Article';
+import AddArticle from './AddArticle';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import * as utils from '../utils/utils';
@@ -53,6 +54,7 @@ class GroupOfArticles extends Component {
           )}
         </header>
         {textInput && <p>{searchResults}</p>}
+        <AddArticle topic_slug={this.props.topic_slug} />
         {this.state.isLoading && <p>... loading articles ...</p>}
         {!this.state.isLoading &&
           sortedArticles.map((article, index) => (
