@@ -9,7 +9,8 @@ import { navigate } from '@reach/router';
 class App extends Component {
   state = {
     topics: [],
-    searchInfo: null
+    searchInfo: null,
+    user: null
   };
   render() {
     return (

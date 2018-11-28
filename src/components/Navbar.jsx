@@ -25,13 +25,14 @@ class Navbar extends Component {
           ))}
         </ul>
         <li>
-          <Link to="/users">Users</Link>
-        </li>
-        <ul>
-          <li>
+          {localStorage.getItem('ncuser') ? (
+            <Link to="" onClick={() => localStorage.clear()}>
+              Logout
+            </Link>
+          ) : (
             <Link to="/login">Login</Link>
-          </li>
-        </ul>
+          )}
+        </li>
         <form>
           <h3>Search Articles:</h3>
           <input
@@ -88,6 +89,11 @@ class Navbar extends Component {
           >
             API
           </a>
+        </li>
+        <li>
+          {localStorage.getItem('ncuser') && (
+            <p>Logged in as {localStorage.getItem('ncuser')}</p>
+          )}
         </li>
       </nav>
     );

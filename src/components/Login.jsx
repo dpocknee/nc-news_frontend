@@ -16,14 +16,19 @@ class Login extends Component {
         <section>
           <form>
             <label htmlFor="usernameInput">Username: </label>
-            <input type="text" name="usernameInput" id="usernameInput" />
+            <input
+              type="text"
+              name="usernameInput"
+              id="usernameInput"
+              onChange={this.handleInput}
+            />
             <input type="submit" value="Login" onClick={this.handleSubmit} />
           </form>
 
           {this.state.loginStatus === 'error' && <p>Not a valid username.</p>}
           {this.state.loginStatus === 'requestError' && <p>Unable to login.</p>}
           {this.state.loginStatus === 'in' && (
-            <p>Logged in as this.state.username.</p>
+            <p>Logged in as {this.state.username}.</p>
           )}
         </section>
       </div>
@@ -36,16 +41,12 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     api
-      .getInfo('users')
-      .then(users => {
-        const allUsernames = users.map(user => user.name);
-        if (allUsernames.includes(this.state.username)) {
-          this.setState({ loginStatus: 'in' });
-        } else {
-          this.setState({ loginStatus: 'error' });
-        }
+      .getInfo(`users/${this.state.username}`)
+      .then(user => {
+        this.setState({ loginStatus: 'in' });
+        localStorage.setItem('ncuser', this.state.username);
       })
-      .catch(this.setState({ loginStatus: 'requestError' }));
+      .catch(this.setState({ loginStatus: 'error' }));
   };
 }
 
