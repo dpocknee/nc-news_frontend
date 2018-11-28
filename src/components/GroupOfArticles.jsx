@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 import * as api from '../api';
 import { isEqual } from 'lodash';
+import { Link } from '@reach/router';
 
 class GroupOfArticles extends Component {
   state = {
     articles: [],
-    isLoading: true
+    isLoading: true,
+    sorter: null
   };
   render() {
     const filteredArticles = this.filterer(this.state.articles);
@@ -28,6 +30,13 @@ class GroupOfArticles extends Component {
             {this.props.topic_slug && `${capitalizer(this.props.topic_slug)}`}{' '}
             Articles
           </h1>
+          <Link to="" onClick={() => this.sorter('recent')}>
+            Most Recent
+          </Link>
+          {' | '}
+          <Link to="" onClick={() => this.sorter('popular')}>
+            Most Popular
+          </Link>
         </header>
         {textInput && <p>{searchResults}</p>}
         {this.state.isLoading && <p>... loading articles ...</p>}
@@ -38,6 +47,10 @@ class GroupOfArticles extends Component {
       </div>
     );
   }
+  sorter = type => {
+    this.setState({ sorter: type });
+  };
+
   componentDidMount() {
     const typeOfInfo = this.props.topic_slug
       ? `topics/${this.props.topic_slug}/articles`

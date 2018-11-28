@@ -18,11 +18,6 @@ class Navbar extends Component {
           <Link to="/articles">Articles</Link>
         </li>
         <ul>
-          <li>Most Recent</li>
-          <li>Most Popular</li>
-        </ul>
-        <li>Topics</li>
-        <ul>
           {this.state.topics.map(topic => (
             <li key={`navTopics${topic.slug}`}>
               <Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link>
@@ -38,7 +33,7 @@ class Navbar extends Component {
           </li>
         </ul>
         <form>
-          <h3>Search:</h3>
+          <h3>Search Articles:</h3>
           <input
             type="text"
             name="searchbox"
@@ -46,7 +41,7 @@ class Navbar extends Component {
             onChange={this.handleTextInput}
           />{' '}
           <br />
-          <input
+          {/* <input
             type="checkbox"
             name="articles"
             id="articleSearch"
@@ -69,7 +64,7 @@ class Navbar extends Component {
             onChange={this.handleCheckbox}
           />
           <label htmlFor="usersSearch">Search users</label>
-          <br />
+          <br /> */}
           <button
             type="submit"
             onClick={event => {
