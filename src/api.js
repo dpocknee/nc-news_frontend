@@ -6,3 +6,8 @@ export const getInfo = async infoType => {
   const { data } = await axios.get(`${BASE_URL}/${infoType}`);
   return data;
 };
+
+export const changeVotes = async (url, upOrDown) => {
+  const { data } = await axios.patch(`${BASE_URL}/${url}?vote=${upOrDown}`);
+  return data;
+};
