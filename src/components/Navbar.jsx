@@ -80,7 +80,15 @@ class Navbar extends Component {
           </button>
         </form>
 
-        <li />
+        <li>
+          <a
+            href="https://frozen-river-28585.herokuapp.com/api"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            API
+          </a>
+        </li>
       </nav>
     );
   }

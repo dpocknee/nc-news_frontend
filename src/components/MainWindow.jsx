@@ -9,7 +9,6 @@ import { Router } from '@reach/router';
 class MainWindow extends Component {
   state = {};
   render() {
-    console.log(this.props.searchInfo);
     return (
       <main>
         <Router>
