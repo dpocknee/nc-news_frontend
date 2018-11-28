@@ -26,7 +26,13 @@ class Navbar extends Component {
         </ul>
         <li>
           {localStorage.getItem('ncuser') ? (
-            <Link to="" onClick={() => localStorage.clear()}>
+            <Link
+              to=""
+              onClick={() => {
+                localStorage.clear();
+                this.props.login(false);
+              }}
+            >
               Logout
             </Link>
           ) : (

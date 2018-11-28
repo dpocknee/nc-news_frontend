@@ -10,13 +10,13 @@ class App extends Component {
   state = {
     topics: [],
     searchInfo: null,
-    user: null
+    logged: false
   };
   render() {
     return (
       <div className="App">
-        <Navbar searchHandler={this.searchHandler} />
-        <MainWindow searchInfo={this.state.searchInfo} />
+        <Navbar searchHandler={this.searchHandler} login={this.login} />
+        <MainWindow searchInfo={this.state.searchInfo} login={this.login} />
       </div>
     );
   }
@@ -25,6 +25,9 @@ class App extends Component {
     this.setState({
       searchInfo: searchInfo
     });
+  };
+  login = status => {
+    this.setState({ logged: status });
   };
 }
 
