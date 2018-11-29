@@ -17,13 +17,18 @@ class User extends Component {
             <img src={user.avatar_url} alt={`Avatar for ${user.username}`} />
           </figure>
           <section>
-            <h1>Username: {user.username}</h1>
-            <h2>Name: {user.name}</h2>
-            <p>Maybe stick some info here about posting frequency etc.</p>
+            <h1>{user.name}</h1>
+            <h2>{user.username}</h2>
+            {/* <p>Maybe stick some info here about posting frequency etc.</p> */}
+            <div className="userInfo">
+              <p>Number of articles: ??</p>
+              <p>Number of posts: ??</p>
+
+              {/* <h3>List of posts</h3> */}
+              {/* <GroupOfComments /> */}
+            </div>
           </section>
         </header>
-        <h3>List of posts</h3>
-        {/* <GroupOfComments /> */}
       </section>
     );
   }

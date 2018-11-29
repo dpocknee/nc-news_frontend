@@ -31,7 +31,7 @@ class GroupOfArticles extends Component {
 
     return (
       <div>
-        <header>
+        <header className="topOfArticlesPage">
           <h1>
             <span className="groupArticlesHeader">
               {this.props.topic_slug &&

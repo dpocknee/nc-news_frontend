@@ -7,6 +7,10 @@
   background-color: #0b042d;
 }
 
+.topOfArticlesPage {
+  margin-bottom: 10px;
+}
+
 .popularRecent {
   padding: 3px;
   margin: 3px;

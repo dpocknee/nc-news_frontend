@@ -5,22 +5,22 @@
 
 .votingDisabledUp {
   transition: 1s ease-in;
-  color: green;
+  color: #0c5e0c;
 }
 
 .votingDisabledDown {
   transition: 1s ease-out;
-  color: red;
+  color: #760f0f;
 }
 
 .votingHoverUp:hover {
   transition: 1s ease-out;
-  color: lightgreen;
+  color: #5fb25f;
 }
 
 .votingHoverDown:hover {
   transition: 1s ease-out;
-  color: lightcoral;
+  color: #df7777;
 }
 
 .votingBlock {

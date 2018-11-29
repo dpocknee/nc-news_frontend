@@ -1,25 +1,66 @@
 .userPage {
-  border: yellow 2px solid;
+  border: #aa9438 3px solid;
+  padding: 10px;
 }
 
 .userPage header {
   width: 100%;
   display: flex;
   flex-direction: row;
+  color: #413400;
 }
 
 .userPage header figure {
+  min-width: 300px;
   width: 300px;
-  height: 260px;
-  border: black 1px dashed;
-  margin: 10px;
+  height: 300px;
+  border: #413400 1px dashed;
+  margin: 0px;
 }
 
 .userPage header figure img {
   width: 100%;
+  /* max-height: 260px; */
 }
 
 .userPage header section {
-  text-align: justify;
-  text-justify: auto;
+  /* text-align: justify;
+  text-justify: auto; */
+  color: #413400;
+}
+
+.userPage header section h1 {
+  font-size: 1.4em;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: #413400;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: left;
+  padding: 14px 20px;
+}
+
+.userPage header section h2 {
+  font-size: 1.2em;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: #76620f;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: left;
+  padding: 14px 20px;
+}
+
+.userInfo {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: #dfca77;
+  text-align: left;
+  padding: 14px 20px;
+}
+
+.userInfo p {
+  color: #413400;
 }
