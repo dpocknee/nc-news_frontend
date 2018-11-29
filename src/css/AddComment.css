@@ -47,7 +47,7 @@
   margin: 5px auto 10px auto;
   display: grid;
   grid-template-columns: 100px 600px;
-  grid-template-rows: 30px 100px 30px;
+  grid-template-rows: 30px 100px 50px;
   grid-template-areas:
     'label2 info2'
     'label4 info4'
@@ -86,4 +86,21 @@
 .deleteArticle div:hover {
   color: #760f0f;
   cursor: pointer;
+}
+
+.postCommentButton {
+  background-color: #1e1352;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.5s ease-in;
+}
+
+.postCommentButton:hover {
+  background-color: #2d882d;
+  transition: 0.5s ease-in;
 }

@@ -31,3 +31,11 @@
   margin-top: 14px;
   text-decoration: none;
 }
+.commentOpaque {
+  opacity: 0;
+  transition: 0.8s ease-out;
+}
+
+.commentSolid {
+  opacity: 1;
+}

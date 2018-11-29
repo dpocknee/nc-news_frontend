@@ -44,7 +44,11 @@ class AddComment extends Component {
               onChange={event => this.handleInput(event, 'textarea')}
             />
             <br />
-            <button type="submit" onClick={this.handleSubmit} className="info5">
+            <button
+              type="submit"
+              onClick={this.handleSubmit}
+              className="info5 postCommentButton"
+            >
               Post Comment
             </button>
           </form>

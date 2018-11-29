@@ -6,7 +6,10 @@ const DeleteComment = props => {
   return (
     <div
       className="deleteCommentWrapper"
-      onClick={() => props.deleteComment(props.commentId)}
+      onClick={() => {
+        props.deleteComment(props.commentId);
+        props.commentOpaque();
+      }}
     >
       <div className="deleteComment">
         <div className="plus">

@@ -76,6 +76,7 @@ nav ul li a :visited {
   margin-top: 5px;
   margin-bottom: 5px;
   color: white;
+  font-size: 0.9em;
 }
 
 .searchButton {

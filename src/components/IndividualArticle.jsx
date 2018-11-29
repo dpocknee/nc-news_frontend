@@ -26,6 +26,7 @@ class IndividualArticle extends Component {
       .getInfo(typeOfInfo)
       .then(article => {
         const fetchedArticle = article[0];
+        console.log(fetchedArticle)
         this.setState({ article: fetchedArticle, isLoading: false });
       })
       .catch(console.log);

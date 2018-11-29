@@ -6,7 +6,7 @@
   margin: 0px;
   padding: 2px;
   color: #003400;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 .loginPopup {
@@ -26,7 +26,7 @@
 .loginButton {
   margin-top: 5px;
   margin-bottom: 5px;
-  color: white;
+  color: #aa3838;
   font-weight: bold;
   font-size: 1.1em;
   text-decoration: none;
@@ -39,10 +39,12 @@
 
 .loginButton:hover {
   background-color: #0c5e0c;
+  color: white;
 }
 
 .loggedin {
   background-color: #0c5e0c;
+  color: white;
 }
 
 .loggedout {

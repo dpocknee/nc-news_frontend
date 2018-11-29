@@ -63,7 +63,7 @@ class GroupOfArticles extends Component {
             <span className="notPopularRecent">Most Popular</span>
           )}
         </header>
-        {textInput && <p classname="topVarious">{searchResults}</p>}
+        {textInput && <p className="topVarious">{searchResults}</p>}
         {localStorage.getItem('ncuser') && this.props.topic_slug && (
           <AddArticle
             topic_slug={this.props.topic_slug}
@@ -71,7 +71,7 @@ class GroupOfArticles extends Component {
           />
         )}
         {this.state.isLoading && (
-          <p classname="topVarious">... loading articles ...</p>
+          <p className="topVarious">... loading articles ...</p>
         )}
         {!this.state.isLoading &&
           sortedArticles.map((article, index) => (
@@ -85,8 +85,6 @@ class GroupOfArticles extends Component {
     this.setState(state => {
       const currentArticles = state.articles;
       const sortedCurrentArticles = utils.sortedArticles(currentArticles, type);
-      const stripOutVotes = sortedCurrentArticles.map(art => art.votes);
-      console.log(type, stripOutVotes, sortedCurrentArticles);
       return { sorter: type, articles: sortedCurrentArticles };
     });
   };
