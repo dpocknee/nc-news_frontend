@@ -6,7 +6,7 @@ import { Link } from '@reach/router';
 const DeleteComment = props => {
   return (
     <div className="deleteCommentWrapper">
-      <Link to="" onClick={() => props.deleteComment(props.CommntId)}>
+      <Link to="" onClick={() => props.deleteComment(props.commentId)}>
         <div className="deleteComment">
           <div className="plus">
             <i className="fas fa-times-circle fa-2x deleter" />

@@ -16,3 +16,8 @@ export const addInfo = async (url, body) => {
   const { data } = await axios.post(`${BASE_URL}/${url}`, body);
   return data;
 };
+
+export const apiDeleteComment = async url => {
+  const { data } = await axios.delete(`${BASE_URL}/${url}`);
+  return data;
+};

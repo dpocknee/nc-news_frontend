@@ -25,7 +25,7 @@ const Comment = props => {
         {localStorage.getItem('ncid') === info.created_by._id ? (
           <DeleteComment
             deleteComment={props.deleteComment}
-            articleId={info._id}
+            commentId={info._id}
           />
         ) : (
           <div />

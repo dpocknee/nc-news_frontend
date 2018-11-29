@@ -11,7 +11,11 @@ class GroupOfComments extends Component {
     return (
       <section>
         {this.state.comments.map((comment, index) => (
-          <Comment key={`comment${index}`} commentInfo={comment} />
+          <Comment
+            key={`comment${index}`}
+            commentInfo={comment}
+            deleteComment={this.deleteComment}
+          />
         ))}
       </section>
     );
@@ -25,6 +29,19 @@ class GroupOfComments extends Component {
       })
       .catch(console.log);
   }
+  deleteComment = commentId => {
+    api
+      .apiDeleteComment(`comments/${commentId}`)
+      .then(deleted => {
+        this.setState(state => {
+          const filteredComments = state.comments.filter(
+            comment => String(comment._id) !== String(commentId)
+          );
+          return { comments: filteredComments };
+        });
+      })
+      .catch(console.log);
+  };
 }
 
 GroupOfComments.propTypes = {};
