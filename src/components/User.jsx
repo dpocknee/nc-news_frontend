@@ -23,7 +23,7 @@ class User extends Component {
           </section>
         </header>
         <h3>List of posts</h3>
-        <GroupOfComments />
+        {/* <GroupOfComments /> */}
       </section>
     );
   }

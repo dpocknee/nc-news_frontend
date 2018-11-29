@@ -8,7 +8,8 @@ class Navbar extends Component {
   state = {
     searchbox: '',
     searchParameters: [],
-    topics: []
+    topics: [],
+    isSearching: false
   };
   render() {
     return (
@@ -45,6 +46,7 @@ class Navbar extends Component {
             type="text"
             name="searchbox"
             id="searchbox"
+            value={this.state.searchbox}
             onChange={this.handleTextInput}
           />{' '}
           <br />
@@ -75,15 +77,22 @@ class Navbar extends Component {
           <button
             type="submit"
             onClick={event => {
+              this.setState(state => {
+                const reverseSearching = state.isSearching ? false : true;
+                return { isSearching: reverseSearching };
+              });
+              const searchToSend = this.state.isSearching
+                ? ''
+                : this.state.searchbox;
               return this.props.searchHandler(event, {
                 searchInfo: {
-                  searchbox: this.state.searchbox,
+                  searchbox: searchToSend,
                   searchParameters: this.state.searchParameters
                 }
               });
             }}
           >
-            Search
+            {this.state.isSearching ? 'Clear Search' : 'Search Articles'}
           </button>
         </form>
 

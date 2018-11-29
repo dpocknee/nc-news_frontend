@@ -1,20 +1,25 @@
 .votingAble {
+  transition: 1s ease-out;
   color: blue;
 }
 
 .votingDisabledUp {
+  transition: 1s ease-in;
   color: green;
 }
 
 .votingDisabledDown {
+  transition: 1s ease-out;
   color: red;
 }
 
 .votingHoverUp:hover {
+  transition: 1s ease-out;
   color: lightgreen;
 }
 
 .votingHoverDown:hover {
+  transition: 1s ease-out;
   color: lightcoral;
 }
 

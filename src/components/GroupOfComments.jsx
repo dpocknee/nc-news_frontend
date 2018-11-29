@@ -51,8 +51,7 @@ class GroupOfComments extends Component {
   };
   updateCommentsWithAddition = postedComment => {
     this.setState(state => {
-      console.log(state.comments, postedComment);
-      return { comments: [...state.comments, postedComment] };
+      return { comments: [postedComment, ...state.comments] };
     });
   };
 }
