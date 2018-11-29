@@ -56,7 +56,7 @@ class AddArticle extends Component {
     const body = {
       title: this.state.title,
       body: this.state.textarea,
-      created_by: localStorage.getItem('ncuser')
+      created_by: localStorage.getItem('ncid')
     };
     console.log('working??', body);
     console.log('url', `topics/${this.props.topic_slug}/articles`);

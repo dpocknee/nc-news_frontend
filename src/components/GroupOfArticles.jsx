@@ -54,7 +54,9 @@ class GroupOfArticles extends Component {
           )}
         </header>
         {textInput && <p>{searchResults}</p>}
+        {(localStorage.getItem('ncuser') && this.props.topic_slug) && 
         <AddArticle topic_slug={this.props.topic_slug} />
+          }
         {this.state.isLoading && <p>... loading articles ...</p>}
         {!this.state.isLoading &&
           sortedArticles.map((article, index) => (

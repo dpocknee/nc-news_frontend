@@ -23,7 +23,7 @@ class MainWindow extends Component {
           />
           <IndividualArticle path="/articles/:article_id" />
           <User path="/users/:username" />
-          <Login path="/login" login={this.login} />
+          <Login path="/login" login={this.props.login} />
         </Router>
       </main>
     );

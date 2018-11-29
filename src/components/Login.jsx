@@ -45,6 +45,7 @@ class Login extends Component {
       .then(user => {
         this.setState({ loginStatus: 'in' });
         localStorage.setItem('ncuser', this.state.username);
+        localStorage.setItem('ncid', user._id);
         this.props.login(true);
       })
       .catch(this.setState({ loginStatus: 'error' }));
