@@ -7,7 +7,6 @@ import DeleteArticle from './DeleteArticle';
 
 const Article = props => {
   const info = props.articleInfo;
-  console.log(info);
   return (
     <article>
       <header>

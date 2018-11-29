@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Toptitle from './Toptitle';
 import { Link } from '@reach/router';
 import * as api from '../api';
+import Login from './Login';
 
 class Navbar extends Component {
   state = {
@@ -26,19 +27,7 @@ class Navbar extends Component {
           ))}
         </ul>
         <li>
-          {localStorage.getItem('ncuser') ? (
-            <Link
-              to=""
-              onClick={() => {
-                localStorage.clear();
-                this.props.login(false);
-              }}
-            >
-              Logout
-            </Link>
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
+          <Login login={this.props.login} />
         </li>
         <form>
           <h3>Search Articles:</h3>
@@ -50,30 +39,6 @@ class Navbar extends Component {
             onChange={this.handleTextInput}
           />{' '}
           <br />
-          {/* <input
-            type="checkbox"
-            name="articles"
-            id="articleSearch"
-            onChange={this.handleCheckbox}
-          />
-          <label htmlFor="articleSearch">Search articles</label>
-          <br />
-          <input
-            type="checkbox"
-            name="comments"
-            id="commentsSearch"
-            onChange={this.handleCheckbox}
-          />
-          <label htmlFor="commentsSearch">Search comments</label>
-          <br />
-          <input
-            type="checkbox"
-            name="users"
-            id="usersSearch"
-            onChange={this.handleCheckbox}
-          />
-          <label htmlFor="usersSearch">Search users</label>
-          <br /> */}
           <button
             type="submit"
             onClick={event => {
