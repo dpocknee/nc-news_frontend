@@ -1,6 +1,6 @@
 .votingAble {
   transition: 1s ease-out;
-  color: blue;
+  color: #3c3176;
 }
 
 .votingDisabledUp {
@@ -36,6 +36,6 @@
 }
 
 .voteText {
-  color: blue;
+  color: #0a042c;
   font-weight: bold;
 }

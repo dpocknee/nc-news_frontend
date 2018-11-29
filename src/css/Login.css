@@ -15,3 +15,23 @@
   margin: 5px auto 5px auto;
   width: 400px;
 }
+
+.loginButtonContainer {
+  align-content: left;
+  text-align: left;
+}
+
+.loginButton {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #aa3838;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-decoration: none;
+  float: left;
+  padding: 12px 18px;
+  transition: 0.25s ease-out;
+  border: 0px;
+  cursor: pointer;
+}

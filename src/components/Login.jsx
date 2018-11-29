@@ -14,7 +14,7 @@ class Login extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="loginButtonContainer">
         {localStorage.getItem('ncuser') ? (
           <div className="navbarLogin">
             <p>
@@ -32,7 +32,10 @@ class Login extends Component {
           </div>
         ) : (
           <div className="navbarLogin">
-            <button onClick={() => this.changeModal('loginWindow', true)}>
+            <button
+              onClick={() => this.changeModal('loginWindow', true)}
+              className="loginButton"
+            >
               Login
             </button>
           </div>

@@ -14,21 +14,24 @@ class Navbar extends Component {
   };
   render() {
     return (
-      <nav>
+      <aside>
         <Toptitle />
-        <h3>
-          <Link to="/articles">All Articles</Link>
-        </h3>
-        <ul>
-          {this.state.topics.map(topic => (
-            <li key={`navTopics${topic.slug}`}>
-              <Link to={`/topics/${topic.slug}/articles`}>
-                {topic.title} Articles
-              </Link>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/articles">All Articles</Link>
             </li>
-          ))}
-        </ul>
-        <form>
+            {this.state.topics.map(topic => (
+              <li key={`navTopics${topic.slug}`}>
+                <Link to={`/topics/${topic.slug}/articles`}>
+                  {topic.title} Articles
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <form className="searchForm">
           <h3>Search Articles:</h3>
           <input
             type="text"
@@ -70,7 +73,7 @@ class Navbar extends Component {
           </a>
         </li> */}
         <Login login={this.props.login} />
-      </nav>
+      </aside>
     );
   }
   componentDidMount() {
