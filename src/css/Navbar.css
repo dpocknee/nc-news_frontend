@@ -1,3 +1,10 @@
+nav {
+  text-align: left;
+  padding: 20px 20px 10px 20px;
+  grid-area: sidebar;
+  font-size: 1.2em;
+}
+
 nav header {
   text-align: center;
 }
@@ -20,13 +27,15 @@ nav li {
 }
 
 nav ul {
-  margin: 5px;
+  margin: 0px;
   list-style: none;
+  padding-left: 0px;
 }
 
 nav ul li {
   margin: 0px;
   list-style: none;
+  padding-left: 0px;
 }
 
 nav h3 {

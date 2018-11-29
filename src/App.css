@@ -1,3 +1,6 @@
+body {
+  background-color: #ffffff;
+}
 .App {
   max-width: 1300px;
   margin: 0px auto 0px auto;
@@ -9,17 +12,10 @@
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr;
   grid-template-areas: 'sidebar main';
-}
-
-nav {
-  border: red 2px solid;
-  text-align: left;
-  padding: 5px;
-  grid-area: sidebar;
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
 main {
-  border: green 2px solid;
   grid-area: main;
   overflow: scroll;
 }

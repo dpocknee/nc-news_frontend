@@ -16,13 +16,15 @@ class Navbar extends Component {
     return (
       <nav>
         <Toptitle />
-        <li>
-          <Link to="/articles">Articles</Link>
-        </li>
+        <h3>
+          <Link to="/articles">All Articles</Link>
+        </h3>
         <ul>
           {this.state.topics.map(topic => (
             <li key={`navTopics${topic.slug}`}>
-              <Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link>
+              <Link to={`/topics/${topic.slug}/articles`}>
+                {topic.title} Articles
+              </Link>
             </li>
           ))}
         </ul>
