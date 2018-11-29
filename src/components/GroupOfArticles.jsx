@@ -48,7 +48,7 @@ class GroupOfArticles extends Component {
               Most Recent
             </Link>
           ) : (
-            'Most Recent'
+            <span className="notPopularRecent">Most Recent</span>
           )}
           {' | '}
           {this.state.sorter === 'created_at' ? (
@@ -60,17 +60,19 @@ class GroupOfArticles extends Component {
               Most Popular
             </Link>
           ) : (
-            'Most Popular'
+            <span className="notPopularRecent">Most Popular</span>
           )}
         </header>
-        {textInput && <p>{searchResults}</p>}
+        {textInput && <p classname="topVarious">{searchResults}</p>}
         {localStorage.getItem('ncuser') && this.props.topic_slug && (
           <AddArticle
             topic_slug={this.props.topic_slug}
             newAddition={this.newAddition}
           />
         )}
-        {this.state.isLoading && <p>... loading articles ...</p>}
+        {this.state.isLoading && (
+          <p classname="topVarious">... loading articles ...</p>
+        )}
         {!this.state.isLoading &&
           sortedArticles.map((article, index) => (
             <Article key={`article${index}`} articleInfo={article} />
