@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment';
+import AddComment from './AddComment';
 import * as api from '../api';
 
 class GroupOfComments extends Component {
@@ -10,6 +11,12 @@ class GroupOfComments extends Component {
   render() {
     return (
       <section>
+        {localStorage.getItem('ncuser') && (
+          <AddComment
+            articleId={this.props.article_id}
+            newAddition={this.updateCommentsWithAddition}
+          />
+        )}
         {this.state.comments.map((comment, index) => (
           <Comment
             key={`comment${index}`}
@@ -41,6 +48,12 @@ class GroupOfComments extends Component {
         });
       })
       .catch(console.log);
+  };
+  updateCommentsWithAddition = postedComment => {
+    this.setState(state => {
+      console.log(state.comments, postedComment);
+      return { comments: [...state.comments, postedComment] };
+    });
   };
 }
 

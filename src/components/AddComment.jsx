@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../css/AddArticle.css';
+import '../css/AddComment.css';
 import * as api from '../api';
 
-class AddArticle extends Component {
+class AddComment extends Component {
   state = {
     title: '',
     textarea: '',
@@ -11,45 +11,30 @@ class AddArticle extends Component {
   };
   render() {
     return (
-      <div className="wholeAdder">
-        {this.props.topic_slug && (
-          <div
-            className={`addarticle  ${
-              !this.state.addForm ? 'formContracted' : 'formExpanded'
-            }`}
-            onClick={() => this.expandForm()}
-          >
-            <div className="plus">
-              <i
-                className={`fas ${
-                  this.state.addForm ? 'fa-minus-circle' : 'fa-plus-circle'
-                } fa-2x`}
-              />
-            </div>
-            <div>
-              <p>Post an article about {this.props.topic_slug}</p>
-            </div>
+      <div className="wholeCommentAdder">
+        <div
+          className={`addComment  ${
+            !this.state.addForm ? 'formContracted' : 'formExpanded'
+          }`}
+          onClick={() => this.expandForm()}
+        >
+          <div className="plus">
+            <i
+              className={`fas ${
+                this.state.addForm ? 'fa-minus-circle' : 'fa-plus-circle'
+              } fa-2x`}
+            />
           </div>
-        )}
+          <div>
+            <p>Comment on this article</p>
+          </div>
+        </div>
         {this.state.addForm && (
-          <form className="addArticleForm">
-            <label className="label1">Topic</label>
-            <div className="info1">{this.props.topic_slug}</div>
+          <form className="addCommentForm">
             <label className="label2">Author</label>
             <div className="info2">{localStorage.getItem('ncuser')}</div>
-            <label htmlFor="titleInput" className="label3">
-              Title
-            </label>
-            <input
-              type="text"
-              name="titleInput"
-              id="titleInput"
-              className="info3"
-              onChange={event => this.handleInput(event, 'title')}
-            />
-            <br />
             <label htmlFor="textAreaInput" className="label4">
-              Article
+              Comment
             </label>
             <textarea
               id="textAreaInput"
@@ -60,7 +45,7 @@ class AddArticle extends Component {
             />
             <br />
             <button type="submit" onClick={this.handleSubmit} className="info5">
-              Post Article
+              Post Comment
             </button>
           </form>
         )}
@@ -75,13 +60,13 @@ class AddArticle extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const body = {
-      title: this.state.title,
       body: this.state.textarea,
       created_by: localStorage.getItem('ncid')
     };
     api
-      .addInfo(`topics/${this.props.topic_slug}/articles`, body)
+      .addInfo(`articles/${this.props.articleId}/comments`, body)
       .then(res => {
+        console.log('post response', res);
         this.props.newAddition(res);
       })
       .catch(console.log);
@@ -94,6 +79,6 @@ class AddArticle extends Component {
   };
 }
 
-AddArticle.propTypes = {};
+AddComment.propTypes = {};
 
-export default AddArticle;
+export default AddComment;

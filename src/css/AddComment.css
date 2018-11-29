@@ -1,0 +1,87 @@
+.wholeCommentAdder {
+  border: blue 1px dashed;
+  margin: 10px 5px 10px 5px;
+}
+.addComment {
+  display: flex;
+  flex-direction: row;
+  color: blue;
+  vertical-align: middle;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  align-content: center;
+}
+
+.addComment div {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.formContracted:hover {
+  color: green;
+  cursor: pointer;
+}
+.formExpanded:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.addComment .plus i {
+  vertical-align: middle;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+.addComment i {
+  margin-left: 5px;
+}
+/* -----Form ----- */
+
+.addCommentForm {
+  vertical-align: top;
+  padding: 10px;
+  padding: 5px;
+  width: 700px;
+  margin: 5px auto 10px auto;
+  display: grid;
+  grid-template-columns: 100px 600px;
+  grid-template-rows: 30px 100px 30px;
+  grid-template-areas:
+    'label2 info2'
+    'label4 info4'
+    'label5 info5';
+}
+
+.label2 {
+  grid-area: label2;
+}
+.info2 {
+  grid-area: info2;
+  text-align: left;
+}
+.label4 {
+  grid-area: label4;
+}
+.info4 {
+  grid-area: info4;
+}
+.label5 {
+  grid-area: label5;
+}
+.info5 {
+  grid-area: info5;
+}
+
+.addCommentForm label {
+  vertical-align: top;
+  text-align: right;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.deleteArticle div:hover {
+  color: red;
+  cursor: pointer;
+}
