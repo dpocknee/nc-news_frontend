@@ -54,9 +54,12 @@ class GroupOfArticles extends Component {
           )}
         </header>
         {textInput && <p>{searchResults}</p>}
-        {(localStorage.getItem('ncuser') && this.props.topic_slug) && 
-        <AddArticle topic_slug={this.props.topic_slug} />
-          }
+        {localStorage.getItem('ncuser') && this.props.topic_slug && (
+          <AddArticle
+            topic_slug={this.props.topic_slug}
+            newAddition={this.newAddition}
+          />
+        )}
         {this.state.isLoading && <p>... loading articles ...</p>}
         {!this.state.isLoading &&
           sortedArticles.map((article, index) => (
@@ -114,6 +117,11 @@ class GroupOfArticles extends Component {
         .catch(console.log);
     }
   }
+  newAddition = postedArticle => {
+    this.setState(state => {
+      return { articles: [...state.articles, postedArticle] };
+    });
+  };
 }
 
 GroupOfArticles.propTypes = {};

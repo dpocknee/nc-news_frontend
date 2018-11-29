@@ -62,7 +62,10 @@ class AddArticle extends Component {
     console.log('url', `topics/${this.props.topic_slug}/articles`);
     api
       .addInfo(`topics/${this.props.topic_slug}/articles`, body)
-      .then(res => console.log('post response', res))
+      .then(res => {
+        console.log('post response', res);
+        this.props.newAddition(res);
+      })
       .catch(console.log);
   };
 }
