@@ -36,7 +36,7 @@ nav ul {
 }
 
 nav ul li {
-  background-color: #3c3176;
+  /* background-color: #760F0F; */
 }
 
 nav ul li :hover {
@@ -48,7 +48,7 @@ nav ul li a {
   margin-top: 5px;
   margin-bottom: 5px;
   width: 200px;
-  background-color: #3c3176;
+  background-color: #760f0f;
   color: white;
   font-weight: bold;
   font-size: 1.1em;
@@ -67,7 +67,7 @@ nav ul li a :visited {
 .searchForm {
   padding: 5px;
   width: 200px;
-  background-color: #aa9438;
+  background-color: #df7777;
   width: 100%;
   box-sizing: border-box;
 }

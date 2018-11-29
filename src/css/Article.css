@@ -1,8 +1,31 @@
+.groupArticlesHeader {
+  padding: 10px;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color: white;
+  text-decoration: none;
+  background-color: #0b042d;
+}
+
+.popularRecent {
+  padding: 3px;
+  margin: 3px;
+  font-size: 1em;
+  line-height: 1em;
+  color: white;
+  text-decoration: none;
+  background-color: #1e1352;
+}
+
+.popularRecent a :hover {
+  background-color: #760f0f;
+}
+
 /* ---------------ARTICLES ------------------- */
 article {
-  border: blue 1px solid;
+  border: #3c3176 3px solid;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
 }
 
 article header {
@@ -13,23 +36,56 @@ article header {
 
 article h1 {
   margin: 0px;
+}
+
+article h1 a {
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
   font-size: 1.5em;
+  line-height: 1.5em;
+  color: white;
+  text-decoration: none;
+  background-color: #3c3176;
+  transition: 0.5s ease-out;
 }
 
-article h2 {
-  margin: 0px;
+article h2 a {
+  margin: 0px 0px 10px 0px;
+  padding: 5px;
   font-size: 1.2em;
+  line-height: 1.2em;
+  background-color: #665b9a;
+  color: white;
+  text-decoration: none;
+  transition: 0.5s ease-out;
 }
 
-article h3 {
+article h3 a {
   margin: 0px;
+  padding: 5px;
   font-size: 1.1em;
+  line-height: 1.1em;
+  background-color: #a098c4;
+  color: white;
+  text-decoration: none;
+  transition: 0.5s ease-out;
+}
+
+article h1 :hover {
+  background-color: #5fb25f;
+  transition: 0.25s ease-in;
+}
+
+article h2 :hover {
+  background-color: #dfca77;
+  transition: 0.25s ease-in;
 }
 
 article section {
   text-align: justify;
   text-justify: auto;
   margin-bottom: 10px;
+  color: #1e1352;
 }
 
 article footer {

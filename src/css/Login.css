@@ -24,7 +24,7 @@
 .loginButton {
   margin-top: 5px;
   margin-bottom: 5px;
-  background-color: #aa3838;
+  background-color: #ffbebe;
   color: white;
   font-weight: bold;
   font-size: 1.1em;
@@ -34,4 +34,8 @@
   transition: 0.25s ease-out;
   border: 0px;
   cursor: pointer;
+}
+
+.loginButton :hover {
+  background-color: #003400;
 }

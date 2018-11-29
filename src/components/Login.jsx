@@ -47,7 +47,12 @@ class Login extends Component {
         >
           <div className="loginPopup">
             <p>Logged Out.</p>
-            <button onClick={() => this.changeModal('loggedOut', false)}>
+            <button
+              onClick={() => {
+                this.changeModal('loggedOut', false);
+                this.changeLoginStatus('out');
+              }}
+            >
               OK
             </button>
           </div>
@@ -117,6 +122,10 @@ class Login extends Component {
   };
   changeModal = (chosenWindow, openClose) => {
     this.setState({ [chosenWindow]: openClose });
+  };
+
+  changeLoginStatus = outOrIn => {
+    this.setState({ loginStatus: outOrIn });
   };
 }
 

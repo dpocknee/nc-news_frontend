@@ -33,12 +33,18 @@ class GroupOfArticles extends Component {
       <div>
         <header>
           <h1>
-            {this.props.topic_slug &&
-              `${utils.capitalizer(this.props.topic_slug)}`}{' '}
-            Articles
+            <span className="groupArticlesHeader">
+              {this.props.topic_slug &&
+                `${utils.capitalizer(this.props.topic_slug)}`}{' '}
+              Articles
+            </span>
           </h1>
           {this.state.sorter === 'votes' ? (
-            <Link to="" onClick={() => this.sorter('created_at')}>
+            <Link
+              to=""
+              onClick={() => this.sorter('created_at')}
+              className="popularRecent"
+            >
               Most Recent
             </Link>
           ) : (
@@ -46,7 +52,11 @@ class GroupOfArticles extends Component {
           )}
           {' | '}
           {this.state.sorter === 'created_at' ? (
-            <Link to="" onClick={() => this.sorter('votes')}>
+            <Link
+              to=""
+              onClick={() => this.sorter('votes')}
+              className="popularRecent"
+            >
               Most Popular
             </Link>
           ) : (
