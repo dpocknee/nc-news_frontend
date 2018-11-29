@@ -33,25 +33,34 @@ class AddArticle extends Component {
         )}
         {this.state.addForm && (
           <form className="addArticleForm">
-            <h3>Topic: {this.props.topic_slug}</h3>
-            <label htmlFor="titleInput">Title:</label>
+            <label className="label1">Topic</label>
+            <div className="info1">{this.props.topic_slug}</div>
+            <label className="label2">Author</label>
+            <div className="info2">{localStorage.getItem('ncuser')}</div>
+            <label htmlFor="titleInput" className="label3">
+              Title
+            </label>
             <input
               type="text"
               name="titleInput"
               id="titleInput"
+              className="info3"
               onChange={event => this.handleInput(event, 'title')}
             />
             <br />
-            <label htmlFor="textAreaInput">Article:</label>
+            <label htmlFor="textAreaInput" className="label4">
+              Article
+            </label>
             <textarea
               id="textAreaInput"
               rows="20"
               cols="100"
+              className="info4"
               onChange={event => this.handleInput(event, 'textarea')}
             />
             <br />
-            <button type="submit" onClick={this.handleSubmit}>
-              Post
+            <button type="submit" onClick={this.handleSubmit} className="info5">
+              Post Article
             </button>
           </form>
         )}

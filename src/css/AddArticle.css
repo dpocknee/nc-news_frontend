@@ -37,16 +37,66 @@
 .addarticle i {
   margin-left: 5px;
 }
+/* -----Form ----- */
 
 .addArticleForm {
-  text-align: left;
   vertical-align: top;
-  margin-bottom: 20px;
+  padding: 10px;
+  padding: 5px;
+  width: 700px;
+  margin: 5px auto 10px auto;
+  display: grid;
+  grid-template-columns: 100px 600px;
+  grid-template-rows: 30px 30px 30px 100px 30px;
+  grid-template-areas:
+    'label1 info1'
+    'label2 info2'
+    'label3 info3'
+    'label4 info4'
+    'label5 info5';
+}
+
+.addArticleForm h3 {
+  margin-top: 0px;
+}
+
+.label1 {
+  grid-area: label1;
+}
+.info1 {
+  grid-area: info1;
+  text-align: left;
+}
+.label2 {
+  grid-area: label2;
+}
+.info2 {
+  grid-area: info2;
+  text-align: left;
+}
+.label3 {
+  grid-area: label3;
+}
+.info3 {
+  grid-area: info3;
+}
+.label4 {
+  grid-area: label4;
+}
+.info4 {
+  grid-area: info4;
+}
+.label5 {
+  grid-area: label5;
+}
+.info5 {
+  grid-area: info5;
 }
 
 .addArticleForm label {
   vertical-align: top;
-  margin-right: 50px;
+  text-align: right;
+  margin-right: 10px;
   font-weight: bold;
 }
 
