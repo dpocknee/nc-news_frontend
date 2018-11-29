@@ -6,43 +6,55 @@ import * as api from '../api';
 class AddArticle extends Component {
   state = {
     title: '',
-    textarea: ''
+    textarea: '',
+    addForm: false
   };
   render() {
     return (
       <div className="wholeAdder">
         {this.props.topic_slug && (
-          <div className="addarticle">
+          <div
+            className={`addarticle  ${
+              !this.state.addForm ? 'formContracted' : 'formExpanded'
+            }`}
+            onClick={() => this.expandForm()}
+          >
             <div className="plus">
-              <i className="fas fa-plus-circle fa-2x" />
+              <i
+                className={`fas ${
+                  this.state.addForm ? 'fa-minus-circle' : 'fa-plus-circle'
+                } fa-2x`}
+              />
             </div>
             <div>
-              <p>Add an Article</p>
+              <p>Post an article about {this.props.topic_slug}</p>
             </div>
           </div>
         )}
-        <form className="addArticleForm">
-          <h3>Topic: {this.props.topic_slug}</h3>
-          <label htmlFor="titleInput">Title:</label>
-          <input
-            type="text"
-            name="titleInput"
-            id="titleInput"
-            onChange={event => this.handleInput(event, 'title')}
-          />
-          <br />
-          <label htmlFor="textAreaInput">Article:</label>
-          <textarea
-            id="textAreaInput"
-            rows="20"
-            cols="100"
-            onChange={event => this.handleInput(event, 'textarea')}
-          />
-          <br />
-          <button type="submit" onClick={this.handleSubmit}>
-            Post
-          </button>
-        </form>
+        {this.state.addForm && (
+          <form className="addArticleForm">
+            <h3>Topic: {this.props.topic_slug}</h3>
+            <label htmlFor="titleInput">Title:</label>
+            <input
+              type="text"
+              name="titleInput"
+              id="titleInput"
+              onChange={event => this.handleInput(event, 'title')}
+            />
+            <br />
+            <label htmlFor="textAreaInput">Article:</label>
+            <textarea
+              id="textAreaInput"
+              rows="20"
+              cols="100"
+              onChange={event => this.handleInput(event, 'textarea')}
+            />
+            <br />
+            <button type="submit" onClick={this.handleSubmit}>
+              Post
+            </button>
+          </form>
+        )}
       </div>
     );
   }
@@ -67,6 +79,12 @@ class AddArticle extends Component {
         this.props.newAddition(res);
       })
       .catch(console.log);
+  };
+  expandForm = () => {
+    this.setState(state => {
+      const newValue = state.addForm ? false : true;
+      return { addForm: newValue };
+    });
   };
 }
 

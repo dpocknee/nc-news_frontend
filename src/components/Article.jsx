@@ -18,7 +18,7 @@ const Article = props => {
             {info.created_by.name}
           </Link>
         </h2>
-        <h3>({format(info.created_at, 'DD-MM-YYYY HH:MM')})</h3>
+        <h3>({format(info.created_at, 'DD-MM-YYYY HH:mm')})</h3>
       </header>
       <section>{info.body}</section>
       <footer>

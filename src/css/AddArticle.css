@@ -10,13 +10,22 @@
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
-  width: 200px;
+  width: 300px;
   align-content: center;
 }
 
 .addarticle div {
   text-align: center;
   vertical-align: middle;
+}
+
+.formContracted:hover {
+  color: green;
+  cursor: pointer;
+}
+.formExpanded:hover {
+  color: red;
+  cursor: pointer;
 }
 
 .addarticle .plus i {
@@ -43,4 +52,5 @@
 
 .deleteArticle div:hover {
   color: red;
+  cursor: pointer;
 }

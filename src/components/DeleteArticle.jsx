@@ -5,17 +5,18 @@ import { Link } from '@reach/router';
 
 const DeleteArticle = props => {
   return (
-    <div className="deleteArticle">
-      <Link to="" onClick={() => props.deleteArticle(props.articleId)}>
-        <div className="addarticle">
-          <div className="plus">
-            <i className="fas fa-times-circle fa-2x deleter" />
-          </div>
-          <div>
-            <p>Delete Article</p>
-          </div>
+    <div
+      className="deleteArticle"
+      onClick={() => props.deleteArticle(props.articleId)}
+    >
+      <div className="addarticle">
+        <div className="plus">
+          <i className="fas fa-times-circle fa-2x deleter" />
         </div>
-      </Link>
+        <div>
+          <p>Delete Article</p>
+        </div>
+      </div>
     </div>
   );
 };

@@ -24,6 +24,7 @@
 
 .deleteCommentWrapper div:hover {
   color: red;
+  cursor: pointer;
 }
 
 .deleteCommentText p {

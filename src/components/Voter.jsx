@@ -21,7 +21,9 @@ class Voter extends Component {
             />
           ) : (
             <Link to="" onClick={event => this.voteHandler('up')}>
-              <i className={`fas fa-arrow-alt-circle-up ${size} votingAble`} />
+              <i
+                className={`fas fa-arrow-alt-circle-up ${size} votingAble votingHoverUp`}
+              />
             </Link>
           )}
           {this.state.voteMod <= -1 ? (
@@ -31,7 +33,7 @@ class Voter extends Component {
           ) : (
             <Link to="" onClick={event => this.voteHandler('down')}>
               <i
-                className={`fas fa-arrow-alt-circle-down ${size} votingAble`}
+                className={`fas fa-arrow-alt-circle-down ${size} votingAble votingHoverDown`}
               />
             </Link>
           )}
