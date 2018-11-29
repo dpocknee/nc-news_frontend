@@ -4,6 +4,7 @@ import Toptitle from './Toptitle';
 import { Link } from '@reach/router';
 import * as api from '../api';
 import Login from './Login';
+import '../css/Navbar.css';
 
 class Navbar extends Component {
   state = {
@@ -32,7 +33,7 @@ class Navbar extends Component {
         </nav>
 
         <form className="searchForm">
-          <h3>Search Articles:</h3>
+          <h3>Search Articles</h3>
           <input
             type="text"
             name="searchbox"
@@ -42,6 +43,7 @@ class Navbar extends Component {
           />{' '}
           <br />
           <button
+            className="searchButton"
             type="submit"
             onClick={event => {
               this.setState(state => {

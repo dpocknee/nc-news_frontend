@@ -1,11 +1,11 @@
 .wholeCommentAdder {
-  border: blue 1px dashed;
+  border: #3c3176 1px dashed;
   margin: 10px 5px 10px 5px;
 }
 .addComment {
   display: flex;
   flex-direction: row;
-  color: blue;
+  color: #3c3176;
   vertical-align: middle;
   font-weight: bold;
   margin-left: auto;
@@ -20,11 +20,11 @@
 }
 
 .formContracted:hover {
-  color: green;
+  color: #2d882d;
   cursor: pointer;
 }
 .formExpanded:hover {
-  color: red;
+  color: #760f0f;
   cursor: pointer;
 }
 
@@ -60,6 +60,7 @@
 .info2 {
   grid-area: info2;
   text-align: left;
+  color: #1e1352;
 }
 .label4 {
   grid-area: label4;
@@ -79,9 +80,10 @@
   text-align: right;
   margin-right: 10px;
   font-weight: bold;
+  color: #1e1352;
 }
 
 .deleteArticle div:hover {
-  color: red;
+  color: #760f0f;
   cursor: pointer;
 }

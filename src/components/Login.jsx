@@ -26,6 +26,7 @@ class Login extends Component {
                 this.props.login(false);
                 this.changeModal('loggedOut', true);
               }}
+              className="loginButton loggedin"
             >
               Logout
             </button>
@@ -34,7 +35,7 @@ class Login extends Component {
           <div className="navbarLogin">
             <button
               onClick={() => this.changeModal('loginWindow', true)}
-              className="loginButton"
+              className="loginButton loggedout"
             >
               Login
             </button>

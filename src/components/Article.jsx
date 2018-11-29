@@ -26,14 +26,15 @@ const Article = props => {
       </header>
       <section>{info.body}</section>
       <footer>
-        {localStorage.getItem('ncid') === info.created_by._id ? (
+        {/* {localStorage.getItem('ncid') === info.created_by._id ? (
           <DeleteArticle
             deleteArticle={props.deleteArticle}
             articleId={info._id}
           />
         ) : (
           <div />
-        )}
+        )} */}
+        <div />
         <Voter type="articles" componentInfo={info} />
       </footer>
     </article>

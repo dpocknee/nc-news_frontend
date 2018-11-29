@@ -5,6 +5,8 @@
 .navbarLogin p {
   margin: 0px;
   padding: 2px;
+  color: #003400;
+  font-size: 0.9em;
 }
 
 .loginPopup {
@@ -24,7 +26,6 @@
 .loginButton {
   margin-top: 5px;
   margin-bottom: 5px;
-  background-color: #ffbebe;
   color: white;
   font-weight: bold;
   font-size: 1.1em;
@@ -36,6 +37,14 @@
   cursor: pointer;
 }
 
-.loginButton :hover {
-  background-color: #003400;
+.loginButton:hover {
+  background-color: #0c5e0c;
+}
+
+.loggedin {
+  background-color: #0c5e0c;
+}
+
+.loggedout {
+  background-color: #ffbebe;
 }

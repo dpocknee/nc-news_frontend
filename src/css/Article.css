@@ -21,7 +21,7 @@
   background-color: #1e1352;
 }
 
-.popularRecent a :hover {
+.popularRecent:hover {
   background-color: #760f0f;
 }
 

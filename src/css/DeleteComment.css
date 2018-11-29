@@ -1,7 +1,7 @@
 .deleteComment {
   display: flex;
   flex-direction: row;
-  color: blue;
+  color: #3c3176;
   vertical-align: middle;
   font-weight: bold;
   margin-left: auto;
@@ -23,7 +23,7 @@
 }
 
 .deleteCommentWrapper div:hover {
-  color: red;
+  color: #760f0f;
   cursor: pointer;
 }
 

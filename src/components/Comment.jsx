@@ -12,8 +12,7 @@ const Comment = props => {
     <article className="commentOnIndividualArticle">
       <p>{info.body}</p>
       <section>
-        <div>
-          {' - '}
+        <div className="commentAuthor">
           <Link to={`/users/${info.created_by.username}`}>
             {' '}
             {info.created_by.name}
