@@ -98,7 +98,9 @@ class Navbar extends Component {
         </li>
         <li>
           {localStorage.getItem('ncuser') && (
-            <p>Logged in as {localStorage.getItem('ncuser')}</p>
+            <p>
+              Logged in as <b>{localStorage.getItem('ncuser')}</b>
+            </p>
           )}
         </li>
       </nav>

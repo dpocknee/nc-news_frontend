@@ -122,6 +122,7 @@ class GroupOfArticles extends Component {
       return { articles: [...state.articles, postedArticle] };
     });
   };
+  deleteArticles = deletedArticle => {};
 }
 
 GroupOfArticles.propTypes = {};
