@@ -21,3 +21,8 @@
   text-align: right;
   margin: 5px;
 }
+
+.voteText {
+  color: blue;
+  font-weight: bold;
+}

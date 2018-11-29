@@ -40,3 +40,7 @@
   margin-right: 50px;
   font-weight: bold;
 }
+
+.deleteArticle div:hover {
+  color: red;
+}

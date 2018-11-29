@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { format } from 'date-fns';
 import Voter from './Voter';
+import DeleteArticle from './DeleteArticle';
 
 const Article = props => {
   const info = props.articleInfo;
@@ -21,6 +22,14 @@ const Article = props => {
       </header>
       <section>{info.body}</section>
       <footer>
+        {localStorage.getItem('ncid') === info.created_by._id ? (
+          <DeleteArticle
+            deleteArticle={props.deleteArticle}
+            articleId={info._id}
+          />
+        ) : (
+          <div />
+        )}
         <Voter type="articles" componentInfo={info} />
       </footer>
     </article>
