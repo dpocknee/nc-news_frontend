@@ -1,0 +1,17 @@
+.navbarLogin {
+  padding: 20px 5px 10px 5px;
+}
+
+.navbarLogin p {
+  margin: 0px;
+  padding: 2px;
+}
+
+.loginPopup {
+  text-align: center;
+}
+
+.loginPopup form {
+  margin: 5px auto 5px auto;
+  width: 400px;
+}

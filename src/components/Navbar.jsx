@@ -26,9 +26,6 @@ class Navbar extends Component {
             </li>
           ))}
         </ul>
-        <li>
-          <Login login={this.props.login} />
-        </li>
         <form>
           <h3>Search Articles:</h3>
           <input
@@ -61,7 +58,7 @@ class Navbar extends Component {
           </button>
         </form>
 
-        <li>
+        {/* <li>
           <a
             href="https://frozen-river-28585.herokuapp.com/api"
             target="_blank"
@@ -69,14 +66,8 @@ class Navbar extends Component {
           >
             API
           </a>
-        </li>
-        <li>
-          {localStorage.getItem('ncuser') && (
-            <p>
-              Logged in as <b>{localStorage.getItem('ncuser')}</b>
-            </p>
-          )}
-        </li>
+        </li> */}
+        <Login login={this.props.login} />
       </nav>
     );
   }

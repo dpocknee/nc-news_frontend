@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import * as api from '../api';
 import Popup from 'reactjs-popup';
 import { Link } from '@reach/router';
+import '../css/Login.css';
 
 class Login extends Component {
   state = {
@@ -15,26 +16,33 @@ class Login extends Component {
     return (
       <div>
         {localStorage.getItem('ncuser') ? (
-          <button
-            onClick={() => {
-              localStorage.clear();
-              this.props.login(false);
-              this.changeModal('loggedOut', true);
-            }}
-          >
-            Logout
-          </button>
+          <div className="navbarLogin">
+            <p>
+              Logged in as <b>{localStorage.getItem('ncuser')}</b>
+            </p>
+            <button
+              onClick={() => {
+                localStorage.clear();
+                this.props.login(false);
+                this.changeModal('loggedOut', true);
+              }}
+            >
+              Logout
+            </button>
+          </div>
         ) : (
-          <button onClick={() => this.changeModal('loginWindow', true)}>
-            Login
-          </button>
+          <div className="navbarLogin">
+            <button onClick={() => this.changeModal('loginWindow', true)}>
+              Login
+            </button>
+          </div>
         )}
         <Popup
           open={this.state.loggedOut}
           closeOnDocumentClick
           onClose={() => this.changeModal('loggedOut', false)}
         >
-          <div>
+          <div className="loginPopup">
             <p>Logged Out.</p>
             <button onClick={() => this.changeModal('loggedOut', false)}>
               OK
@@ -46,7 +54,7 @@ class Login extends Component {
           closeOnDocumentClick
           onClose={() => this.changeModal('loginWindow', false)}
         >
-          <div>
+          <div className="loginPopup">
             <header>
               <h1>Login</h1>
             </header>

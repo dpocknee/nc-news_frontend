@@ -1,4 +1,8 @@
 .App {
+  max-width: 1300px;
+  margin: 0px auto 0px auto;
+  padding-top: 10px;
+  box-sizing: border-box;
   text-align: center;
   height: 100vh;
   display: grid;
