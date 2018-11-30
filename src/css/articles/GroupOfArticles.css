@@ -1,0 +1,49 @@
+.groupArticlesHeader {
+  padding: 10px;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color: white;
+  text-decoration: none;
+  background-color: #0b042d;
+}
+
+.topOfArticlesPage {
+  margin-bottom: 10px;
+}
+
+.notPopularRecent {
+  padding: 3px;
+  margin: 3px;
+  font-size: 1em;
+  line-height: 1em;
+  color: white;
+  text-decoration: none;
+  background-color: #1e1352;
+}
+
+.popularRecent {
+  padding: 3px;
+  margin: 3px;
+  font-size: 1em;
+  line-height: 1em;
+  background-color: white;
+  text-decoration: none;
+  color: #1e1352;
+}
+
+.popularRecent:hover {
+  background-color: #003400;
+  color: white;
+}
+
+.topVarious {
+  color: #1e1352;
+}
+
+@media (max-width: 600px) {
+  .groupArticlesHeader {
+    padding: 8px;
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+}

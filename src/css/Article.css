@@ -1,46 +1,3 @@
-.groupArticlesHeader {
-  padding: 10px;
-  font-size: 1.5em;
-  line-height: 1.5em;
-  color: white;
-  text-decoration: none;
-  background-color: #0b042d;
-}
-
-.topOfArticlesPage {
-  margin-bottom: 10px;
-}
-
-.notPopularRecent {
-  padding: 3px;
-  margin: 3px;
-  font-size: 1em;
-  line-height: 1em;
-  color: white;
-  text-decoration: none;
-  background-color: #1e1352;
-}
-
-.popularRecent {
-  padding: 3px;
-  margin: 3px;
-  font-size: 1em;
-  line-height: 1em;
-  background-color: white;
-  text-decoration: none;
-  color: #1e1352;
-}
-
-.popularRecent:hover {
-  background-color: #003400;
-  color: white;
-}
-
-.topVarious {
-  color: #1e1352;
-}
-
-/* ---------------ARTICLES ------------------- */
 article {
   border: #3c3176 3px solid;
   margin: 5px;
@@ -125,4 +82,47 @@ article footer .voting div {
   background-color: lightcoral;
   padding: 10px;
   width: 100px;
+}
+
+@media (max-width: 600px) {
+  article {
+    margin: 5px 0px 5px 0px;
+    padding: 8px;
+  }
+
+  article header {
+    margin-bottom: 2px;
+  }
+
+  article h1 a {
+    margin: 0px 0px 5px 0px;
+    padding: 5px;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    transition: 0.5s ease-out;
+  }
+
+  article h2 {
+    margin: 10px 0px 5px 0px;
+  }
+
+  article h2 a {
+    margin: 0px 0px 5px 0px;
+    padding: 2px;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    transition: 0.5s ease-out;
+  }
+
+  article h3 {
+    margin: 10px 0px 5px 0px;
+  }
+
+  article h3 a {
+    margin: 0px;
+    padding: 5px;
+    font-size: 0.9em;
+    line-height: 1em;
+    transition: 0.5s ease-out;
+  }
 }

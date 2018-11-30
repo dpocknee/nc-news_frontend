@@ -6,7 +6,7 @@ import Nav from './Nav';
 import { Link } from '@reach/router';
 import * as api from '../../api';
 import Login from './Login';
-import '../../css/Navbar.css';
+import '../../css/navbar/Navbar.css';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
 
@@ -20,24 +20,11 @@ class Navbar extends Component {
   render() {
     return (
       <aside>
-        {/* SMALL SCREENS */}
         <MediaQuery maxWidth={400}>Resize test</MediaQuery>
         {/* <Collapsible transitionTime={400} trigger={<Toptitle />}> */}
         <Toptitle />
         <Nav topics={this.state.topics} />
-        <SearchForm
-          searchbox={this.state.searchbox}
-          handleTextInput={this.handleTextInput}
-          searchButton={this.searchButton}
-          isSearching={this.state.isSearching}
-        />
-        <Login login={this.props.login} />
-        {/* </Collapsible> */}
-        {/* </MediaQuery> */}
-        {/* BIG SCREENS */}
-        {/* <MediaQuery minWidth={401}>
-          <Toptitle />
-          <Nav topics={this.state.topics} />
+        <div className="searchAndLogin">
           <SearchForm
             searchbox={this.state.searchbox}
             handleTextInput={this.handleTextInput}
@@ -45,7 +32,7 @@ class Navbar extends Component {
             isSearching={this.state.isSearching}
           />
           <Login login={this.props.login} />
-        </MediaQuery> */}
+        </div>
       </aside>
     );
   }

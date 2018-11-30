@@ -4,6 +4,7 @@ import Article from './Article';
 import AddArticle from './AddArticle';
 import * as api from '../api';
 import { Link } from '@reach/router';
+import '../css/articles/GroupOfArticles.css';
 import * as utils from '../utils/utils';
 
 class GroupOfArticles extends Component {

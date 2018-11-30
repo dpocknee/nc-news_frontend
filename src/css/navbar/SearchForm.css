@@ -1,0 +1,38 @@
+.searchForm {
+  padding: 5px;
+  width: 300px;
+  background-color: #df7777;
+  box-sizing: border-box;
+}
+
+.searchForm h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  font-size: 0.9em;
+}
+
+.searchButton {
+  background-color: white;
+  color: #df7777;
+  font-weight: bold;
+  border: 0px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .searchAndLogin {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 400px) {
+  .searchAndLogin {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as api from '../../api';
 import Popup from 'reactjs-popup';
-import '../../css/Login.css';
+import '../../css/navbar/Login.css';
 
 class Login extends Component {
   state = {

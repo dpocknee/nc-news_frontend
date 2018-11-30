@@ -29,6 +29,17 @@ aside {
   font-size: 1.2em;
 }
 
+@media (max-width: 600px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  main {
+    width: 100%;
+  }
+}
+
 @media (max-width: 400px) {
   .App {
     display: flex;
@@ -36,8 +47,10 @@ aside {
   }
   main {
     width: 100%;
+    overflow: none;
   }
   aside {
     width: 100%;
+    padding: 0px;
   }
 }
