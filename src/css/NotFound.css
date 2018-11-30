@@ -1,0 +1,22 @@
+.notFound {
+  height: 90vh;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.notFound h1 {
+  background-color: #410000;
+  text-align: center;
+  color: white;
+  margin-top: 25px;
+  padding: 22px;
+  font-size: 1.2em;
+}
+
+.errorStatus {
+  font-weight: bold;
+}
+
+.errorMsg {
+  font-weight: normal;
+}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 import AddArticle from './AddArticle';
 import * as api from '../api';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import * as utils from '../utils/utils';
 
 class GroupOfArticles extends Component {
@@ -98,7 +98,15 @@ class GroupOfArticles extends Component {
       .then(articles => {
         this.setState({ articles, isLoading: false });
       })
-      .catch(console.log);
+      .catch(err => {
+        const errorMsg = err.response.data.message;
+        const errorStatus = err.response.status;
+        console.log(err.response.data.message, err.response.status);
+        navigate('/error', {
+          replace: true,
+          state: { errorMsg, errorStatus }
+        });
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {
