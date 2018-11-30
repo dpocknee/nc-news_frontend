@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as api from '../api';
+import * as api from '../../api';
 import Popup from 'reactjs-popup';
-import { Link } from '@reach/router';
-import '../css/Login.css';
+import '../../css/Login.css';
 
 class Login extends Component {
   state = {

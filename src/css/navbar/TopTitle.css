@@ -1,0 +1,19 @@
+.mainTitle {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  width: 220px;
+  background-color: #410000;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-decoration: none;
+  float: left;
+  display: block;
+  text-align: left;
+  padding: 14px 20px;
+  transition: 0.25s ease-out;
+}
+.mainTitle h1 {
+  margin: 0px;
+  text-align: center;
+}
