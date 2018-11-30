@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 import AddArticle from './AddArticle';
 import * as api from '../api';
-import { Link, navigate } from '@reach/router';
+import { Link } from '@reach/router';
 import * as utils from '../utils/utils';
 
 class GroupOfArticles extends Component {
