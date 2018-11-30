@@ -47,7 +47,7 @@ class Login extends Component {
           onClose={() => this.changeModal('loggedOut', false)}
         >
           <div className="loginPopup">
-            <p>Logged Out.</p>
+            <p>You have been logged out.</p>
             <button
               onClick={() => {
                 this.changeModal('loggedOut', false);
@@ -62,27 +62,29 @@ class Login extends Component {
           open={this.state.loginWindow}
           closeOnDocumentClick
           onClose={() => this.changeModal('loginWindow', false)}
+          className="loginPopup"
         >
           <div className="loginPopup">
             <header>
               <h1>Login</h1>
             </header>
             <section>
-              <form>
-                <label htmlFor="usernameInput">Username: </label>
-                <input
-                  type="text"
-                  name="usernameInput"
-                  id="usernameInput"
-                  onChange={this.handleInput}
-                />
-                <input
-                  type="submit"
-                  value="Login"
-                  onClick={this.handleSubmit}
-                />
-              </form>
-
+              {this.state.loginStatus !== 'in' && (
+                <form>
+                  <label htmlFor="usernameInput">Username: </label>
+                  <input
+                    type="text"
+                    name="usernameInput"
+                    id="usernameInput"
+                    onChange={this.handleInput}
+                  />
+                  <input
+                    type="submit"
+                    value="Login"
+                    onClick={this.handleSubmit}
+                  />
+                </form>
+              )}
               {this.state.loginStatus === 'error' && (
                 <p>Not a valid username.</p>
               )}
@@ -119,7 +121,10 @@ class Login extends Component {
         localStorage.setItem('ncid', user._id);
         this.props.login(true);
       })
-      .catch(this.setState({ loginStatus: 'error' }));
+      .catch(err => {
+        this.setState({ loginStatus: 'error' });
+        console.log(err);
+      });
   };
   changeModal = (chosenWindow, openClose) => {
     this.setState({ [chosenWindow]: openClose });

@@ -87,6 +87,7 @@ class AddArticle extends Component {
       .addInfo(`topics/${this.props.topic_slug}/articles`, body)
       .then(res => {
         this.props.newAddition(res);
+        this.expandForm();
       })
       .catch(console.log);
   };
