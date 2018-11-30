@@ -4,6 +4,7 @@ import GroupOfComments from './GroupOfComments';
 import '../css/User.css';
 import * as api from '../api';
 import * as utils from '../utils/utils';
+import UserArticles from './UserArticles';
 
 class User extends Component {
   state = {
@@ -14,7 +15,6 @@ class User extends Component {
   };
   render() {
     const user = this.state.user;
-    // console.log(this.state);
     return (
       <>
         <section className="userPage">
@@ -49,8 +49,10 @@ class User extends Component {
           )}
         </section>
         <section>
-          <h3>List of articles</h3>
-          {/* <GroupOfComments /> */}
+          <UserArticles
+            isLoading={this.state.isLoading}
+            articles={this.state.articles}
+          />
         </section>
       </>
     );
@@ -63,7 +65,6 @@ class User extends Component {
       api.getInfo(`${userUrl}/comments`)
     ])
       .then(([user, articles, comments]) => {
-        console.log('BACK:', user, articles, comments);
         this.setState({ user, articles, comments, isLoading: false });
       })
       .catch(err => utils.errorHandler(err));
