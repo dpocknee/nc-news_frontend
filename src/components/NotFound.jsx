@@ -4,7 +4,7 @@ import '../css/NotFound.css';
 const NotFound = () => {
   return (
     <div className="notFound">
-      <h1>Error: This page does not exist.</h1>
+      <h1>Oh no! Something went wrong!</h1>
     </div>
   );
 };

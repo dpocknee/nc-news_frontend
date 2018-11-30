@@ -10,7 +10,7 @@ aside {
 .mainTitle {
   margin-top: 5px;
   margin-bottom: 20px;
-  width: 200px;
+  width: 220px;
   background-color: #410000;
   color: white;
   font-weight: bold;
@@ -47,7 +47,7 @@ nav ul li :hover {
 nav ul li a {
   margin-top: 5px;
   margin-bottom: 5px;
-  width: 200px;
+  width: 220px;
   background-color: #760f0f;
   color: white;
   font-weight: bold;
