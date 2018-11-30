@@ -4,7 +4,7 @@ import GroupOfComments from './GroupOfComments';
 import '../css/User.css';
 import * as api from '../api';
 import * as utils from '../utils/utils';
-import UserArticles from './UserArticles';
+import UserArticlesOrComments from './UserArticlesOrComents';
 
 class User extends Component {
   state = {
@@ -33,7 +33,6 @@ class User extends Component {
               <section>
                 <h1>{user.name}</h1>
                 <h2>{user.username}</h2>
-                {/* <p>Maybe stick some info here about posting frequency etc.</p> */}
                 <div className="userInfo">
                   <p>
                     Number of articles posted:{' '}
@@ -49,9 +48,15 @@ class User extends Component {
           )}
         </section>
         <section>
-          <UserArticles
+          <UserArticlesOrComments
             isLoading={this.state.isLoading}
-            articles={this.state.articles}
+            articlesOrComments={this.state.articles}
+            contentType="Articles"
+          />
+          <UserArticlesOrComments
+            isLoading={this.state.isLoading}
+            articlesOrComments={this.state.comments}
+            contentType="Comments"
           />
         </section>
       </>
