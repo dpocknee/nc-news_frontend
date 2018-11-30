@@ -8,7 +8,7 @@ export const filterer = (articles, searchbox) => {
   return searchbox
     ? articles.filter(article => {
         const regex = new RegExp(searchbox, 'gi');
-        return regex.test(article.body);
+        return regex.test(article.body) || regex.test(article.title);
       })
     : articles;
 };
