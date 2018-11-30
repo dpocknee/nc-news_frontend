@@ -98,15 +98,7 @@ class GroupOfArticles extends Component {
       .then(articles => {
         this.setState({ articles, isLoading: false });
       })
-      .catch(err => {
-        const errorMsg = err.response.data.message;
-        const errorStatus = err.response.status;
-        console.log(err.response.data.message, err.response.status);
-        navigate('/error', {
-          replace: true,
-          state: { errorMsg, errorStatus }
-        });
-      });
+      .catch(err => utils.errorHandler(err));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -117,7 +109,6 @@ class GroupOfArticles extends Component {
       this.setState({ isLoading: true });
     }
     if (this.props.topic_slug !== prevProps.topic_slug) {
-      console.log('runnng');
       const typeOfInfo =
         this.props.topic_slug && this.props.topic_slug !== prevProps.topic_slug
           ? `topics/${this.props.topic_slug}/articles`
@@ -125,14 +116,12 @@ class GroupOfArticles extends Component {
       api
         .getInfo(typeOfInfo)
         .then(articles => {
-          // if (!isEqual(prevState.articles, articles)) {
           this.setState({
             articles,
             isLoading: false
           });
-          // }
         })
-        .catch(console.log);
+        .catch(err => utils.errorHandler(err));
     }
   }
   newAddition = postedArticle => {

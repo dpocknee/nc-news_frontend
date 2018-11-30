@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../css/AddArticle.css';
 import * as api from '../api';
+import * as utils from '../utils/utils';
 
 class AddArticle extends Component {
   state = {
@@ -89,7 +90,7 @@ class AddArticle extends Component {
         this.props.newAddition(res);
         this.expandForm();
       })
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   };
   expandForm = () => {
     this.setState(state => {

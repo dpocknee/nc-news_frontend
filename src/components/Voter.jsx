@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import '../css/Voter.css';
-import { isEqual } from 'lodash';
+import * as utils from '../utils/utils';
 
 class Voter extends Component {
   state = {
@@ -54,7 +54,7 @@ class Voter extends Component {
         `/${this.props.type}/${this.props.componentInfo._id}`,
         upOrDown
       )
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   };
   componentDidMount() {
     const votes = this.props.componentInfo.votes;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import GroupOfComments from './GroupOfComments';
 import '../css/User.css';
 import * as api from '../api';
+import * as utils from '../utils/utils';
 
 class User extends Component {
   state = {
@@ -39,7 +40,7 @@ class User extends Component {
       .then(user => {
         this.setState({ user, isLoading: false });
       })
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   }
 }
 

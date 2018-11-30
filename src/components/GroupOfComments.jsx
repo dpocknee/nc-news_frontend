@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Comment from './Comment';
 import AddComment from './AddComment';
 import * as api from '../api';
+import * as utils from '../utils/utils';
 
 class GroupOfComments extends Component {
   state = {
@@ -34,7 +35,7 @@ class GroupOfComments extends Component {
       .then(comments => {
         this.setState({ comments, isLoading: false });
       })
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   }
   deleteComment = commentId => {
     api
@@ -47,7 +48,7 @@ class GroupOfComments extends Component {
           return { comments: filteredComments };
         });
       })
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   };
   updateCommentsWithAddition = postedComment => {
     this.setState(state => {

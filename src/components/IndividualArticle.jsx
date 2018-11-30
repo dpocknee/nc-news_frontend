@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 import GroupOfComments from './GroupOfComments';
 import * as api from '../api';
+import * as utils from '../utils/utils';
 
 class IndividualArticle extends Component {
   state = {
@@ -26,10 +27,9 @@ class IndividualArticle extends Component {
       .getInfo(typeOfInfo)
       .then(article => {
         const fetchedArticle = article[0];
-        console.log(fetchedArticle)
         this.setState({ article: fetchedArticle, isLoading: false });
       })
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   }
 }
 

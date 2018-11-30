@@ -123,7 +123,6 @@ class Login extends Component {
       })
       .catch(err => {
         this.setState({ loginStatus: 'error' });
-        console.log(err);
       });
   };
   changeModal = (chosenWindow, openClose) => {

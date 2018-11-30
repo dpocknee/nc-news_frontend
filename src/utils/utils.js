@@ -1,4 +1,5 @@
 import { compareDesc } from 'date-fns';
+import { navigate } from '@reach/router';
 
 export const capitalizer = word => {
   return word[0].toUpperCase() + word.slice(1);
@@ -24,4 +25,13 @@ export const sortedArticles = (articles, typeOfSort) => {
     }
   });
   return sortedArts;
+};
+
+export const errorHandler = err => {
+  const errorMsg = err.response.data.message;
+  const errorStatus = err.response.status;
+  navigate('/error', {
+    replace: true,
+    state: { errorMsg, errorStatus }
+  });
 };

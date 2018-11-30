@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../css/AddComment.css';
 import * as api from '../api';
+import * as utils from '../utils/utils';
 
 class AddComment extends Component {
   state = {
@@ -70,10 +71,9 @@ class AddComment extends Component {
     api
       .addInfo(`articles/${this.props.articleId}/comments`, body)
       .then(res => {
-        console.log('post response', res);
         this.props.newAddition(res);
       })
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   };
   expandForm = () => {
     this.setState(state => {
