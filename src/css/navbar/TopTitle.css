@@ -18,7 +18,7 @@
   text-align: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .mainTitle {
     width: 100%;
     box-sizing: border-box;

@@ -31,7 +31,7 @@ nav ul li a :visited {
   background-color: #2d882d;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   header {
     margin-top: 0px;
   }
@@ -39,20 +39,31 @@ nav ul li a :visited {
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 10px;
-    font-size: 0.8em;
+    font-size: 0.6em;
   }
+
   nav ul {
     margin: 5px 0px 5px 0px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: #760f0f;
+  }
+  nav ul li a {
+    width: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 
 @media (max-width: 400px) {
+  nav {
+    font-size: 0.8em;
+  }
   nav ul {
     display: block;
+    background-color: white;
   }
   nav ul li a {
     width: 100%;

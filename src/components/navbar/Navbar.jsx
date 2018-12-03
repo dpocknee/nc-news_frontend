@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import Toptitle from './Toptitle';
 import SearchForm from './SearchForm';
 import Nav from './Nav';
-import { Link } from '@reach/router';
 import * as api from '../../api';
 import Login from './Login';
-import '../../css/navbar/Navbar.css';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
 
@@ -20,7 +18,7 @@ class Navbar extends Component {
   render() {
     return (
       <aside>
-        <MediaQuery maxWidth={400}>Resize test</MediaQuery>
+        {/* <MediaQuery maxWidth={400}>Resize test</MediaQuery> */}
         {/* <Collapsible transitionTime={400} trigger={<Toptitle />}> */}
         <Toptitle />
         <Nav topics={this.state.topics} />
