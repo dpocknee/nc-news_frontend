@@ -11,21 +11,16 @@
 }
 
 .userPage header figure {
-  min-width: 300px;
-  width: 300px;
-  height: 300px;
+  min-width: 100px;
   border: #aa9438 1px dashed;
   margin: 0px;
 }
 
 .userPage header figure img {
   width: 100%;
-  /* max-height: 260px; */
 }
 
 .userPage header section {
-  /* text-align: justify;
-  text-justify: auto; */
   color: #413400;
 }
 
@@ -67,4 +62,12 @@
 
 .userLoading {
   color: #413400;
+}
+
+@media (max-width: 600px) {
+  .userPage header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

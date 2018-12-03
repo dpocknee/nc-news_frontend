@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import './css/Article.css';
-import './css/Comment.css';
+// import './css/Comment.css';
 import Navbar from './components/navbar/Navbar';
 import MainWindow from './components/MainWindow';
 

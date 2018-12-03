@@ -18,9 +18,13 @@
   text-align: center;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .mainTitle {
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 0px;
+  }
+  .mainTitle h1 {
+    margin-bottom: 0px;
   }
 }

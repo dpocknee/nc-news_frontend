@@ -34,9 +34,13 @@ aside {
     display: flex;
     flex-direction: column;
     height: auto;
+    padding-top: 0px;
   }
   main {
     width: 100%;
+  }
+  aside {
+    padding: 0px;
   }
 }
 
