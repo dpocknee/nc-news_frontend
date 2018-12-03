@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { format } from 'date-fns';
-import * as api from '../api';
-import Voter from './Voter';
+import Voter from '../Voter';
 import DeleteComment from './DeleteComment';
+import '../../css/Comments/Comment.css';
 
 class Comment extends Component {
   state = {
@@ -53,6 +53,9 @@ class Comment extends Component {
   }
 }
 
-Comment.propTypes = {};
+Comment.propTypes = {
+  commentInfo: PropTypes.array,
+  deleteComment: PropTypes.function
+};
 
 export default Comment;

@@ -70,6 +70,9 @@ class Voter extends Component {
   }
 }
 
-Voter.propTypes = {};
+Voter.propTypes = {
+  componentInfo: PropTypes.object,
+  type: PropTypes.string
+};
 
 export default Voter;

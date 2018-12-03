@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/Article.css';
-import '../css/User.css';
+import '../../css/Articles/Article.css';
+import '../../css/User/User.css';
 import ArticleCondensed from './ArticleCondensed';
 
 const UserArticlesOrComments = props => {
@@ -44,6 +44,9 @@ const UserArticlesOrComments = props => {
   );
 };
 
-UserArticlesOrComments.propTypes = {};
+UserArticlesOrComments.propTypes = {
+  articlesOrComments: PropTypes.array,
+  contentType: PropTypes.string
+};
 
 export default UserArticlesOrComments;

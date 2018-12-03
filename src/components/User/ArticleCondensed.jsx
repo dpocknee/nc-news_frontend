@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { format } from 'date-fns';
-import Voter from './Voter';
 
 const Article = props => {
   const info = props.articleInfo;
@@ -24,6 +23,8 @@ const Article = props => {
   );
 };
 
-Article.propTypes = {};
+Article.propTypes = {
+  articleInfo: PropTypes.object.isRequired
+};
 
 export default Article;

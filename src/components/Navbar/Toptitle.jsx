@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import '../../css/navbar/TopTitle.css';
+import '../../css/Navbar/TopTitle.css';
 
 const Toptitle = props => {
   return (
@@ -9,7 +8,5 @@ const Toptitle = props => {
     </header>
   );
 };
-
-Toptitle.propTypes = {};
 
 export default Toptitle;

@@ -74,6 +74,9 @@ class Navbar extends Component {
   };
 }
 
-Navbar.propTypes = {};
+Navbar.propTypes = {
+  searchHandler: PropTypes.function,
+  login: PropTypes.function
+};
 
 export default Navbar;

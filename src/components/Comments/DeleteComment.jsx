@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/DeleteComment.css';
+import '../../css/Comments/DeleteComment.css';
 
 const DeleteComment = props => {
   return (
@@ -23,6 +23,9 @@ const DeleteComment = props => {
   );
 };
 
-DeleteComment.propTypes = {};
+DeleteComment.propTypes = {
+  commentInfo: PropTypes.object,
+  deleteComment: PropTypes.function
+};
 
 export default DeleteComment;

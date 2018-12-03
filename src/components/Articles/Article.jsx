@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { format } from 'date-fns';
-import Voter from './Voter';
-import DeleteArticle from './DeleteArticle';
+import '../../css/Articles/Article.css';
+import Voter from '../Voter';
 
 const Article = props => {
   const info = props.articleInfo;
@@ -26,14 +26,6 @@ const Article = props => {
       </header>
       <section>{info.body}</section>
       <footer>
-        {/* {localStorage.getItem('ncid') === info.created_by._id ? (
-          <DeleteArticle
-            deleteArticle={props.deleteArticle}
-            articleId={info._id}
-          />
-        ) : (
-          <div />
-        )} */}
         <div />
         <Voter type="articles" componentInfo={info} />
       </footer>
@@ -41,6 +33,8 @@ const Article = props => {
   );
 };
 
-Article.propTypes = {};
+Article.propTypes = {
+  articleInfo: PropTypes.object.isRequired
+};
 
 export default Article;

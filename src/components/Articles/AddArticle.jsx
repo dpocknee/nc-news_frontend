@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../css/AddArticle.css';
-import * as api from '../api';
-import * as utils from '../utils/utils';
+import '../../css/Articles/AddArticle.css';
+import * as api from '../../api';
+import * as utils from '../../utils/utils';
 
 class AddArticle extends Component {
   state = {
@@ -100,6 +100,9 @@ class AddArticle extends Component {
   };
 }
 
-AddArticle.propTypes = {};
+AddArticle.propTypes = {
+  topic_slug: PropTypes.string,
+  newAddition: PropTypes.function
+};
 
 export default AddArticle;

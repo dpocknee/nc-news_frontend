@@ -1,5 +1,4 @@
 import axios from 'axios';
-const request = require('request');
 
 const BASE_URL = 'https://frozen-river-28585.herokuapp.com/api';
 
@@ -21,13 +20,4 @@ export const addInfo = async (url, body) => {
 export const apiDeleteComment = async url => {
   const { data } = await axios.delete(`${BASE_URL}/${url}`);
   return data;
-};
-
-export const checkImage = async url => {
-  console.log('URL', url);
-  let imageFound = '';
-  return axios
-    .get(url)
-    .then(info => console.log(info))
-    .catch(err => console.log(err));
 };

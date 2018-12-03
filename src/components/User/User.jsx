@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import GroupOfComments from './GroupOfComments';
-import '../css/User.css';
-import * as api from '../api';
-import * as utils from '../utils/utils';
-import UserArticlesOrComments from './UserArticlesOrComents';
+import '../../css/User/User.css';
+import * as api from '../../api';
+import * as utils from '../../utils/utils';
+import UserArticlesOrComments from './UserArticlesOrComments';
 
 class User extends Component {
   state = {
@@ -97,6 +96,8 @@ class User extends Component {
   };
 }
 
-User.propTypes = {};
+User.propTypes = {
+  username: PropTypes.string
+};
 
 export default User;

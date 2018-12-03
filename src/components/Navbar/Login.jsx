@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as api from '../../api';
 import Popup from 'reactjs-popup';
-import '../../css/navbar/Login.css';
+import '../../css/Navbar/Login.css';
 
 class Login extends Component {
   state = {
@@ -66,6 +66,10 @@ class Login extends Component {
           <div className="loginPopup">
             <header>
               <h1>Login</h1>
+              <p>
+                Possible usernames you can use are <br /> <b>jessjelly</b>,{' '}
+                <b>weegembump</b> or <b>tickle122</b>
+              </p>
             </header>
             <section>
               {this.state.loginStatus !== 'in' && (
@@ -133,6 +137,8 @@ class Login extends Component {
   };
 }
 
-Login.propTypes = {};
+Login.propTypes = {
+  login: PropTypes.function
+};
 
 export default Login;

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment';
 import AddComment from './AddComment';
-import * as api from '../api';
-import * as utils from '../utils/utils';
+import * as api from '../../api';
+import * as utils from '../../utils/utils';
 
 class GroupOfComments extends Component {
   state = {
@@ -57,6 +57,8 @@ class GroupOfComments extends Component {
   };
 }
 
-GroupOfComments.propTypes = {};
+GroupOfComments.propTypes = {
+  searchInfo: PropTypes.array
+};
 
 export default GroupOfComments;

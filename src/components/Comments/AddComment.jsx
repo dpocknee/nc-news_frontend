@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../css/AddComment.css';
-import * as api from '../api';
-import * as utils from '../utils/utils';
+import '../../css/Comments/AddComment.css';
+import * as api from '../../api';
+import * as utils from '../../utils/utils';
 
 class AddComment extends Component {
   state = {
@@ -83,6 +83,9 @@ class AddComment extends Component {
   };
 }
 
-AddComment.propTypes = {};
+AddComment.propTypes = {
+  articleId: PropTypes.string,
+  newAddition: PropTypes.object
+};
 
 export default AddComment;

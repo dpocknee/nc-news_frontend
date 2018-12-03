@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import './css/Article.css';
-// import './css/Comment.css';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import MainWindow from './components/MainWindow';
 
 class App extends Component {

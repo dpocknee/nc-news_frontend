@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Article from './Article';
 import AddArticle from './AddArticle';
-import * as api from '../api';
+import * as api from '../../api';
 import { Link } from '@reach/router';
-import '../css/articles/GroupOfArticles.css';
-import * as utils from '../utils/utils';
+import '../../css/Articles/GroupOfArticles.css';
+import * as utils from '../../utils/utils';
 
 class GroupOfArticles extends Component {
   state = {
@@ -82,7 +82,6 @@ class GroupOfArticles extends Component {
     );
   }
   sorter = type => {
-    // [...arts].sort
     this.setState(state => {
       const currentArticles = state.articles;
       const sortedCurrentArticles = utils.sortedArticles(currentArticles, type);
@@ -130,9 +129,10 @@ class GroupOfArticles extends Component {
       return { articles: [...state.articles, postedArticle] };
     });
   };
-  deleteArticles = deletedArticle => {};
 }
 
-GroupOfArticles.propTypes = {};
+GroupOfArticles.propTypes = {
+  searchInfo: PropTypes.array
+};
 
 export default GroupOfArticles;

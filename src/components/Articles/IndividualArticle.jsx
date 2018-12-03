@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Article from './Article';
-import GroupOfComments from './GroupOfComments';
-import * as api from '../api';
-import * as utils from '../utils/utils';
+import GroupOfComments from '../Comments/GroupOfComments';
+import * as api from '../../api';
+import * as utils from '../../utils/utils';
 
 class IndividualArticle extends Component {
   state = {
@@ -33,6 +33,8 @@ class IndividualArticle extends Component {
   }
 }
 
-IndividualArticle.propTypes = {};
+IndividualArticle.propTypes = {
+  article_id: PropTypes.string
+};
 
 export default IndividualArticle;
