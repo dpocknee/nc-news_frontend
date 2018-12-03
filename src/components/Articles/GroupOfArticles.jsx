@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 import AddArticle from './AddArticle';
 import * as api from '../../api';
-import { Link } from '@reach/router';
 import '../../css/Articles/GroupOfArticles.css';
 import * as utils from '../../utils/utils';
+import PopularOrRecent from './PopularOrRecent';
 
 class GroupOfArticles extends Component {
   state = {
@@ -32,38 +32,11 @@ class GroupOfArticles extends Component {
 
     return (
       <div>
-        <header className="topOfArticlesPage">
-          <h1>
-            <span className="groupArticlesHeader">
-              {this.props.topic_slug &&
-                `${utils.capitalizer(this.props.topic_slug)}`}{' '}
-              Articles
-            </span>
-          </h1>
-          {this.state.sorter === 'votes' ? (
-            <Link
-              to=""
-              onClick={() => this.sorter('created_at')}
-              className="popularRecent"
-            >
-              Most Recent
-            </Link>
-          ) : (
-            <span className="notPopularRecent">Most Recent</span>
-          )}
-          {' | '}
-          {this.state.sorter === 'created_at' ? (
-            <Link
-              to=""
-              onClick={() => this.sorter('votes')}
-              className="popularRecent"
-            >
-              Most Popular
-            </Link>
-          ) : (
-            <span className="notPopularRecent">Most Popular</span>
-          )}
-        </header>
+        <PopularOrRecent
+          topic_slug={this.props.topic_slug}
+          sorter={this.sorter}
+          stateSorter={this.state.sorter}
+        />
         {textInput && <p className="topVarious">{searchResults}</p>}
         {localStorage.getItem('ncuser') && this.props.topic_slug && (
           <AddArticle

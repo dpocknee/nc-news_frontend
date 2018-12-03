@@ -5,8 +5,6 @@ import SearchForm from './SearchForm';
 import Nav from './Nav';
 import * as api from '../../api';
 import Login from './Login';
-import Collapsible from 'react-collapsible';
-import MediaQuery from 'react-responsive';
 
 class Navbar extends Component {
   state = {
@@ -18,8 +16,6 @@ class Navbar extends Component {
   render() {
     return (
       <aside>
-        {/* <MediaQuery maxWidth={400}>Resize test</MediaQuery> */}
-        {/* <Collapsible transitionTime={400} trigger={<Toptitle />}> */}
         <Toptitle />
         <Nav topics={this.state.topics} />
         <div className="searchAndLogin">
