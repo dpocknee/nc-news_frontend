@@ -11,7 +11,9 @@ class User extends Component {
     user: {},
     articles: [],
     comments: [],
-    isLoading: true
+    isLoading: true,
+    avatarUrl: 200,
+    placeHolder: true
   };
   render() {
     const user = this.state.user;
@@ -25,10 +27,16 @@ class User extends Component {
           ) : (
             <header>
               <figure>
-                <img
-                  src={user.avatar_url}
-                  alt={`Avatar for ${user.username}`}
-                />
+                {this.state.placeHolder ? (
+                  <img
+                    src={user.avatar_url}
+                    onLoad={() => this.checkImage(true)}
+                    onError={() => this.checkImage(false)}
+                    alt={`Avatar for ${user.username}`}
+                  />
+                ) : (
+                  <i className="fas fa-user-circle profilePlaceholder" />
+                )}
               </figure>
               <section>
                 <h1>{user.name}</h1>
@@ -70,10 +78,23 @@ class User extends Component {
       api.getInfo(`${userUrl}/comments`)
     ])
       .then(([user, articles, comments]) => {
-        this.setState({ user, articles, comments, isLoading: false });
+        return Promise.all([user, articles, comments]);
       })
-      .catch(err => utils.errorHandler(err));
+      .then(([user, articles, comments]) => {
+        this.setState({
+          user,
+          articles,
+          comments,
+          isLoading: false
+        });
+      })
+      .catch(err => {
+        utils.errorHandler(err);
+      });
   }
+  checkImage = val => {
+    this.setState({ placeHolder: val });
+  };
 }
 
 User.propTypes = {};

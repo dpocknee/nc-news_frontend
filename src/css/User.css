@@ -64,6 +64,11 @@
   color: #413400;
 }
 
+.profilePlaceholder {
+  font-size: 200px;
+  padding: 5px;
+}
+
 @media (max-width: 600px) {
   .userPage header {
     display: flex;

@@ -38,12 +38,12 @@
 }
 
 .loginButton:hover {
-  background-color: #0c5e0c;
+  background-color: #410000;
   color: white;
 }
 
 .loggedin {
-  background-color: #0c5e0c;
+  background-color: #410000;
   color: white;
 }
 

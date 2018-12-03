@@ -28,10 +28,17 @@ export const sortedArticles = (articles, typeOfSort) => {
 };
 
 export const errorHandler = err => {
+  console.log('errorHadler', err);
   const errorMsg = err.response.data.message;
   const errorStatus = err.response.status;
   navigate('/error', {
     replace: true,
     state: { errorMsg, errorStatus }
   });
+};
+
+export const imageChecker = (imageSrc, cb) => {
+  const img = new Image();
+  img.src = imageSrc;
+  if (img.onload) return true;
 };
