@@ -105,7 +105,7 @@ class GroupOfArticles extends Component {
 }
 
 GroupOfArticles.propTypes = {
-  searchInfo: PropTypes.array
+  searchInfo: PropTypes.object
 };
 
 export default GroupOfArticles;

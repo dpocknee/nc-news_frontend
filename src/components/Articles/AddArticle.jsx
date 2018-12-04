@@ -8,7 +8,8 @@ class AddArticle extends Component {
   state = {
     title: '',
     textarea: '',
-    addForm: false
+    addForm: false,
+    formValidation: true
   };
   render() {
     return (
@@ -54,8 +55,6 @@ class AddArticle extends Component {
             </label>
             <textarea
               id="textAreaInput"
-              rows="20"
-              cols="100"
               className="info4"
               onChange={event => this.handleInput(event, 'textarea')}
             />
@@ -84,13 +83,18 @@ class AddArticle extends Component {
       body: this.state.textarea,
       created_by: localStorage.getItem('ncid')
     };
-    api
-      .addInfo(`topics/${this.props.topic_slug}/articles`, body)
-      .then(res => {
-        this.props.newAddition(res);
-        this.expandForm();
-      })
-      .catch(err => utils.errorHandler(err));
+    if (this.state.title === '' || this.state.textarea === '') {
+      this.setState({ formValidation: false });
+    } else {
+      this.setState({ formValidation: true });
+      api
+        .addInfo(`topics/${this.props.topic_slug}/articles`, body)
+        .then(res => {
+          this.props.newAddition(res);
+          this.expandForm();
+        })
+        .catch(err => utils.errorHandler(err));
+    }
   };
   expandForm = () => {
     this.setState(state => {

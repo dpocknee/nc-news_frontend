@@ -11,7 +11,7 @@
 
 - [x] Basic styling added
 - [x] Responsive design _need some media quieres!_
-- [ ] Items aligned _post article / comment overflows from its containing element_
+- [x] Items aligned _post article / comment overflows from its containing element_
 - [x] Content legible (not too wide, obstructed, etc)
 - [x] Refreshing doesn’t cause an issue on sub-pages
 - [x] No errors in the console _If avatar link doest work, we get console error and broken image_

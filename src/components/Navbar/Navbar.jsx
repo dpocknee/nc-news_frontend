@@ -58,7 +58,8 @@ class Navbar extends Component {
   searchButton = event => {
     this.setState(state => {
       const reverseSearching = state.isSearching ? false : true;
-      return { isSearching: reverseSearching };
+      const clearBox = state.isSearching ? '' : state.searchbox;
+      return { isSearching: reverseSearching, searchbox: clearBox };
     });
     const searchToSend = this.state.isSearching ? '' : this.state.searchbox;
     return this.props.searchHandler(event, {

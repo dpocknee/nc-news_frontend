@@ -43,10 +43,10 @@
   vertical-align: top;
   padding: 10px;
   padding: 5px;
-  width: 700px;
+  width: 90%;
   margin: 5px auto 10px auto;
   display: grid;
-  grid-template-columns: 100px 600px;
+  grid-template-columns: 1fr 7fr;
   grid-template-rows: 30px 100px 50px;
   grid-template-areas:
     'label2 info2'

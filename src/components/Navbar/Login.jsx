@@ -16,7 +16,7 @@ class Login extends Component {
       <div className="loginButtonContainer">
         {localStorage.getItem('ncuser') ? (
           <div className="navbarLogin">
-            <p>
+            <p className="loggedInText">
               Logged in as <b>{localStorage.getItem('ncuser')}</b>
             </p>
             <button
@@ -32,6 +32,9 @@ class Login extends Component {
           </div>
         ) : (
           <div className="navbarLogin">
+            <p className="notLoggedInText">
+              Log in to post comments or articles.
+            </p>
             <button
               onClick={() => this.changeModal('loginWindow', true)}
               className="loginButton loggedout"
@@ -96,7 +99,7 @@ class Login extends Component {
               )}
               {this.state.loginStatus === 'in' && (
                 <div>
-                  <p>Logged in as {this.state.username}.</p>
+                  <p>Logged in as {localStorage.getItem('ncuser')}.</p>
                   <button
                     onClick={() => this.changeModal('loginWindow', false)}
                   >
@@ -119,9 +122,9 @@ class Login extends Component {
     api
       .getInfo(`users/${this.state.username}`)
       .then(user => {
-        this.setState({ loginStatus: 'in' });
         localStorage.setItem('ncuser', this.state.username);
         localStorage.setItem('ncid', user._id);
+        this.setState({ loginStatus: 'in', username: '' });
         this.props.login(true);
       })
       .catch(err => {

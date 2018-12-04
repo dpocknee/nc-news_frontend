@@ -39,8 +39,6 @@ class AddComment extends Component {
             </label>
             <textarea
               id="textAreaInput"
-              rows="20"
-              cols="100"
               className="info4"
               onChange={event => this.handleInput(event, 'textarea')}
             />

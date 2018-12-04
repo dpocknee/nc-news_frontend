@@ -27,7 +27,7 @@ const MainWindow = props => {
 };
 
 MainWindow.propTypes = {
-  searchInfo: PropTypes.array,
+  searchInfo: PropTypes.object,
   login: PropTypes.function
 };
 

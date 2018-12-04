@@ -5,7 +5,6 @@
 .navbarLogin p {
   margin: 0px;
   padding: 2px;
-  color: #003400;
   font-size: 0.8em;
 }
 
@@ -53,4 +52,12 @@
 
 .loginPopup {
   color: #0b042d;
+}
+
+.loggedInText {
+  color: #003400;
+}
+
+.notLoggedInText {
+  color: #aa3838;
 }
