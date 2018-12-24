@@ -16,7 +16,7 @@ class IndividualArticle extends Component {
     const typeOfInfo = `articles/${articleId}`;
     api
       .getInfo(typeOfInfo)
-      .then((article) => {
+      .then(article => {
         const fetchedArticle = article[0];
         this.setState({ article: fetchedArticle, isLoading: false });
       })
@@ -38,7 +38,11 @@ class IndividualArticle extends Component {
 }
 
 IndividualArticle.propTypes = {
-  articleId: PropTypes.string.isRequired,
+  articleId: PropTypes.string,
+};
+
+IndividualArticle.defaultProps = {
+  articleId: undefined,
 };
 
 export default IndividualArticle;

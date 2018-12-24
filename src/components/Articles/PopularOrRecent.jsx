@@ -3,7 +3,7 @@ import '../../css/Articles/GroupOfArticles.css';
 import PropTypes from 'prop-types';
 import * as utils from '../../utils/utils';
 
-const PopularOrRecent = (props) => {
+const PopularOrRecent = props => {
   const { stateSorter, topicSlug, sorter } = props;
   return (
     <header className="topOfArticlesPage">
@@ -34,9 +34,13 @@ Articles
 };
 
 PopularOrRecent.propTypes = {
-  topicSlug: PropTypes.string.isRequired,
+  topicSlug: PropTypes.string,
   stateSorter: PropTypes.string.isRequired,
   sorter: PropTypes.func.isRequired,
+};
+
+PopularOrRecent.defaultProps = {
+  topicSlug: undefined,
 };
 
 export default PopularOrRecent;

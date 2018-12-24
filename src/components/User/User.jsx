@@ -102,7 +102,11 @@ class User extends Component {
 }
 
 User.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
+};
+
+User.defaultProps = {
+  username: undefined,
 };
 
 export default User;

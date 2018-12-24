@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
 import * as api from '../api';
 import * as utils from '../utils/utils';
 import '../css/Voter.css';
@@ -46,18 +45,34 @@ class Voter extends Component {
       <div className="votingAlignment">
         <div className="votingBlock">
           {voteMod >= 1 ? (
-            <i className={`fas fa-arrow-alt-circle-up ${size}  votingDisabledUp`} />
+            <div className="votingButton">
+              <i className={`fas fa-arrow-alt-circle-up ${size}  votingDisabledUp`} />
+            </div>
           ) : (
-            <button type="button" onClick={event => this.voteHandler('up')}>
+            <div
+              role="button"
+              tabIndex={0}
+              className="votingButton votingAble votingHoverUp"
+              onClick={() => this.voteHandler('up')}
+              onKeyDown={() => this.voteHandler('up')}
+            >
               <i className={`fas fa-arrow-alt-circle-up ${size} votingAble votingHoverUp`} />
-            </button>
+            </div>
           )}
           {voteMod <= -1 ? (
-            <i className={`fas fa-arrow-alt-circle-down ${size} votingDisabledDown`} />
+            <div className="votingButton">
+              <i className={`fas fa-arrow-alt-circle-down ${size} votingDisabledDown`} />
+            </div>
           ) : (
-            <button type="button" onClick={event => this.voteHandler('down')}>
+            <div
+              role="button"
+              tabIndex={0}
+              className="votingButton votingAble votingHoverDown"
+              onClick={() => this.voteHandler('down')}
+              onKeyDown={() => this.voteHandler('down')}
+            >
               <i className={`fas fa-arrow-alt-circle-down ${size} votingAble votingHoverDown`} />
-            </button>
+            </div>
           )}
         </div>
         <div className="voteText">

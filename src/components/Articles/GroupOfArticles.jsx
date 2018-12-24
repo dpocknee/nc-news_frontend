@@ -19,7 +19,7 @@ class GroupOfArticles extends Component {
     const typeOfInfo = topicSlug ? `topics/${topicSlug}/articles` : 'articles';
     api
       .getInfo(typeOfInfo)
-      .then((articles) => {
+      .then(articles => {
         this.setState({ articles, isLoading: false });
       })
       .catch(err => utils.errorHandler(err));
@@ -37,7 +37,7 @@ class GroupOfArticles extends Component {
         : 'articles';
       api
         .getInfo(typeOfInfo)
-        .then((articles) => {
+        .then(articles => {
           this.setState({
             articles,
             isLoading: false,
@@ -47,15 +47,15 @@ class GroupOfArticles extends Component {
     }
   }
 
-  sorter = (type) => {
-    this.setState((state) => {
+  sorter = type => {
+    this.setState(state => {
       const currentArticles = state.articles;
       const sortedCurrentArticles = utils.sortedArticles(currentArticles, type);
       return { sorter: type, articles: sortedCurrentArticles };
     });
   };
 
-  newAddition = (postedArticle) => {
+  newAddition = postedArticle => {
     this.setState(state => ({ articles: [...state.articles, postedArticle] }));
   };
 
@@ -88,13 +88,18 @@ class GroupOfArticles extends Component {
   }
 }
 
-GroupOfArticles.propTypes = {
-  searchInfo: PropTypes.shape({
-    searchInfo: PropTypes.shape({
-      searchbox: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
-  topicSlug: PropTypes.string.isRequired,
-};
+// GroupOfArticles.propTypes = {
+//   searchInfo: PropTypes.shape({
+//     searchInfo: PropTypes.shape({
+//       searchbox: PropTypes.string,
+//     }).isRequired,
+//   }),
+//   topicSlug: PropTypes.string,
+// };
+
+// GroupOfArticles.defaultProps = {
+//   searchInfo: null,
+//   topicSlug: undefined,
+// };
 
 export default GroupOfArticles;

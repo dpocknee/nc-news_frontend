@@ -1,35 +1,51 @@
+.votingButton {
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+}
+
 .votingAble {
   transition: 1s ease-out;
   color: #3c3176;
+  border: none;
 }
 
 .votingDisabledUp {
   transition: 1s ease-in;
   color: #0c5e0c;
+  border: none;
 }
 
 .votingDisabledDown {
   transition: 1s ease-out;
   color: #760f0f;
+  border: none;
 }
 
 .votingHoverUp:hover {
   transition: 1s ease-out;
   color: #5fb25f;
+  border: none;
 }
 
 .votingHoverDown:hover {
   transition: 1s ease-out;
   color: #df7777;
+  border: none;
 }
 
 .votingBlock {
   font-size: 20px;
+  height: 50px;
+  border: none;
+  display: flex;
+  flex-direction: row;
 }
 
 .votingAlignment {
   display: block;
-  width: 100px;
+  justify-content: right;
   height: 70px;
   text-align: right;
   margin: 5px;

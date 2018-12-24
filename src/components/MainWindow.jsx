@@ -14,7 +14,7 @@ const MainWindow = props => {
       <Router>
         <GroupOfArticles path="/" />
         <GroupOfArticles path="/articles" searchInfo={searchInfo} />
-        <GroupOfArticles path="/topics/:topic_slug/articles" searchInfo={searchInfo} />
+        <GroupOfArticles path="/topics/:topicSlug/articles" searchInfo={searchInfo} />
         <IndividualArticle path="/articles/:articleId" />
         <User path="/users/:username" />
         <BadRequest path="/error" />
@@ -27,7 +27,11 @@ const MainWindow = props => {
 MainWindow.propTypes = {
   searchInfo: PropTypes.shape({
     searchbox: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+MainWindow.defaultProps = {
+  searchInfo: null,
 };
 
 export default MainWindow;

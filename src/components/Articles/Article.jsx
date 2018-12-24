@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import '../../css/Articles/Article.css';
 import Voter from '../Voter';
 
-const Article = (props) => {
+const Article = props => {
   const { articleInfo } = props;
   return (
     <article>
@@ -35,17 +35,17 @@ const Article = (props) => {
   );
 };
 
-Article.propTypes = {
-  articleInfo: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    created_by: {
-      username: PropTypes.string.isRequired,
-      _id: PropTypes.string.isRequired,
-    },
-    created_at: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-  }).isRequired,
-};
+// Article.propTypes = {
+//   articleInfo: PropTypes.shape({
+//     _id: PropTypes.string.isRequired,
+//     title: PropTypes.string.isRequired,
+//     created_by: {
+//       username: PropTypes.string.isRequired,
+//       _id: PropTypes.string.isRequired,
+//     },
+//     created_at: PropTypes.string.isRequired,
+//     body: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
 
 export default Article;

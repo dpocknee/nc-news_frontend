@@ -17,7 +17,7 @@ class AddArticle extends Component {
     this.setState({ [type]: eventValue });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     const { title, textarea } = this.state;
     const { topicSlug, newAddition } = this.props;
     event.preventDefault();
@@ -32,7 +32,7 @@ class AddArticle extends Component {
       this.setState({ formValidation: true });
       api
         .addInfo(`topics/${topicSlug}/articles`, body)
-        .then((res) => {
+        .then(res => {
           newAddition(res);
           this.expandForm();
         })
@@ -41,7 +41,7 @@ class AddArticle extends Component {
   };
 
   expandForm = () => {
-    this.setState((state) => {
+    this.setState(state => {
       const newValue = !state.addForm;
       return { addForm: newValue };
     });
@@ -64,10 +64,7 @@ class AddArticle extends Component {
               <i className={`fas ${addForm ? 'fa-minus-circle' : 'fa-plus-circle'} fa-2x`} />
             </div>
             <div>
-              <p>
-                Post an article about
-                {topicSlug}
-              </p>
+              <p>{`Post an article about ${topicSlug}.`}</p>
             </div>
           </div>
         )}
@@ -76,7 +73,7 @@ class AddArticle extends Component {
             <label className="label1" htmlFor="topic">
               Topic
             </label>
-            <div className="info1" fieldId="topic" id="topic">
+            <div className="info1" id="topic">
               {topicSlug}
             </div>
 
@@ -111,8 +108,8 @@ class AddArticle extends Component {
             </button>
           </form>
         )}
-        {formValidation && (
-          <div>
+        {!formValidation && (
+          <div className="addarticle">
             <p>Please fill out all fields in the form.</p>
           </div>
         )}
