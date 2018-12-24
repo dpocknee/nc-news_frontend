@@ -41,6 +41,7 @@ Article.propTypes = {
     title: PropTypes.string.isRequired,
     created_by: {
       username: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
     },
     created_at: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
