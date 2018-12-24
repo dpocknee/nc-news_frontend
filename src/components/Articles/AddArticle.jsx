@@ -9,36 +9,83 @@ class AddArticle extends Component {
     title: '',
     textarea: '',
     addForm: false,
-    formValidation: true
+    formValidation: true,
   };
+
+  handleInput = (event, type) => {
+    const eventValue = event.target.value;
+    this.setState({ [type]: eventValue });
+  };
+
+  handleSubmit = (event) => {
+    const { title, textarea } = this.state;
+    const { topicSlug, newAddition } = this.props;
+    event.preventDefault();
+    const body = {
+      title,
+      body: textarea,
+      created_by: localStorage.getItem('ncid'),
+    };
+    if (title === '' || textarea === '') {
+      this.setState({ formValidation: false });
+    } else {
+      this.setState({ formValidation: true });
+      api
+        .addInfo(`topics/${topicSlug}/articles`, body)
+        .then((res) => {
+          newAddition(res);
+          this.expandForm();
+        })
+        .catch(err => utils.errorHandler(err));
+    }
+  };
+
+  expandForm = () => {
+    this.setState((state) => {
+      const newValue = !state.addForm;
+      return { addForm: newValue };
+    });
+  };
+
   render() {
+    const { topicSlug } = this.props;
+    const { addForm, formValidation } = this.state;
     return (
       <div className="wholeAdder">
-        {this.props.topic_slug && (
+        {topicSlug && (
           <div
-            className={`addarticle  ${
-              !this.state.addForm ? 'formContracted' : 'formExpanded'
-            }`}
+            role="button"
+            tabIndex={0}
+            className={`addarticle  ${!addForm ? 'formContracted' : 'formExpanded'}`}
             onClick={() => this.expandForm()}
+            onKeyDown={() => this.expandForm()}
           >
             <div className="plus">
-              <i
-                className={`fas ${
-                  this.state.addForm ? 'fa-minus-circle' : 'fa-plus-circle'
-                } fa-2x`}
-              />
+              <i className={`fas ${addForm ? 'fa-minus-circle' : 'fa-plus-circle'} fa-2x`} />
             </div>
             <div>
-              <p>Post an article about {this.props.topic_slug}</p>
+              <p>
+                Post an article about
+                {topicSlug}
+              </p>
             </div>
           </div>
         )}
-        {this.state.addForm && (
+        {addForm && (
           <form className="addArticleForm">
-            <label className="label1">Topic</label>
-            <div className="info1">{this.props.topic_slug}</div>
-            <label className="label2">Author</label>
-            <div className="info2">{localStorage.getItem('ncuser')}</div>
+            <label className="label1" htmlFor="topic">
+              Topic
+            </label>
+            <div className="info1" fieldId="topic" id="topic">
+              {topicSlug}
+            </div>
+
+            <label className="label2" htmlFor="author">
+              Author
+            </label>
+            <div className="info2" id="author">
+              {localStorage.getItem('ncuser')}
+            </div>
             <label htmlFor="titleInput" className="label3">
               Title
             </label>
@@ -59,54 +106,24 @@ class AddArticle extends Component {
               onChange={event => this.handleInput(event, 'textarea')}
             />
             <br />
-            <button
-              type="submit"
-              onClick={this.handleSubmit}
-              className="info5 postArticleButton"
-            >
+            <button type="submit" onClick={this.handleSubmit} className="info5 postArticleButton">
               Post Article
             </button>
           </form>
         )}
+        {formValidation && (
+          <div>
+            <p>Please fill out all fields in the form.</p>
+          </div>
+        )}
       </div>
     );
   }
-  handleInput = (event, type) => {
-    const eventValue = event.target.value;
-    this.setState({ [type]: eventValue });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    const body = {
-      title: this.state.title,
-      body: this.state.textarea,
-      created_by: localStorage.getItem('ncid')
-    };
-    if (this.state.title === '' || this.state.textarea === '') {
-      this.setState({ formValidation: false });
-    } else {
-      this.setState({ formValidation: true });
-      api
-        .addInfo(`topics/${this.props.topic_slug}/articles`, body)
-        .then(res => {
-          this.props.newAddition(res);
-          this.expandForm();
-        })
-        .catch(err => utils.errorHandler(err));
-    }
-  };
-  expandForm = () => {
-    this.setState(state => {
-      const newValue = state.addForm ? false : true;
-      return { addForm: newValue };
-    });
-  };
 }
 
 AddArticle.propTypes = {
-  topic_slug: PropTypes.string,
-  newAddition: PropTypes.function
+  topicSlug: PropTypes.string.isRequired,
+  newAddition: PropTypes.func.isRequired,
 };
 
 export default AddArticle;

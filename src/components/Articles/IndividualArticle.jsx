@@ -8,33 +8,37 @@ import * as utils from '../../utils/utils';
 class IndividualArticle extends Component {
   state = {
     article: {},
-    comments: [],
-    isLoading: true
+    isLoading: true,
   };
-  render() {
-    return (
-      !this.state.isLoading && (
-        <section>
-          <Article articleInfo={this.state.article} />
-          <GroupOfComments article_id={this.props.article_id} />
-        </section>
-      )
-    );
-  }
+
   componentDidMount() {
-    const typeOfInfo = `articles/${this.props.article_id}`;
+    const { articleId } = this.props;
+    const typeOfInfo = `articles/${articleId}`;
     api
       .getInfo(typeOfInfo)
-      .then(article => {
+      .then((article) => {
         const fetchedArticle = article[0];
         this.setState({ article: fetchedArticle, isLoading: false });
       })
       .catch(err => utils.errorHandler(err));
   }
+
+  render() {
+    const { articleId } = this.props;
+    const { article, isLoading } = this.state;
+    return (
+      !isLoading && (
+        <section>
+          <Article articleInfo={article} />
+          <GroupOfComments articleId={articleId} />
+        </section>
+      )
+    );
+  }
 }
 
 IndividualArticle.propTypes = {
-  article_id: PropTypes.string
+  articleId: PropTypes.string.isRequired,
 };
 
 export default IndividualArticle;

@@ -22,13 +22,15 @@
 }
 
 .popularRecent {
-  padding: 3px;
+  padding: 5px;
   margin: 3px;
   font-size: 1em;
   line-height: 1em;
   background-color: white;
   text-decoration: none;
   color: #1e1352;
+  border: none;
+  cursor: pointer;
 }
 
 .popularRecent:hover {

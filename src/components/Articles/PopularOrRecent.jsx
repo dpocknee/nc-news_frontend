@@ -1,38 +1,31 @@
 import React from 'react';
-import { Link } from '@reach/router';
 import '../../css/Articles/GroupOfArticles.css';
-import * as utils from '../../utils/utils';
 import PropTypes from 'prop-types';
+import * as utils from '../../utils/utils';
 
-const PopularOrRecent = props => {
+const PopularOrRecent = (props) => {
+  const { stateSorter, topicSlug, sorter } = props;
   return (
     <header className="topOfArticlesPage">
       <h1>
         <span className="groupArticlesHeader">
-          {props.topic_slug && `${utils.capitalizer(props.topic_slug)}`}{' '}
-          Articles
+          {topicSlug && `${utils.capitalizer(topicSlug)}`}
+          {' '}
+Articles
         </span>
       </h1>
-      {props.stateSorter === 'votes' ? (
-        <Link
-          to=""
-          onClick={() => props.sorter('created_at')}
-          className="popularRecent"
-        >
+      {stateSorter === 'votes' ? (
+        <button type="button" onClick={() => sorter('created_at')} className="popularRecent">
           Most Recent
-        </Link>
+        </button>
       ) : (
         <span className="notPopularRecent">Most Recent</span>
       )}
       {' | '}
-      {props.stateSorter === 'created_at' ? (
-        <Link
-          to=""
-          onClick={() => props.sorter('votes')}
-          className="popularRecent"
-        >
+      {stateSorter === 'created_at' ? (
+        <button type="button" onClick={() => sorter('votes')} className="popularRecent">
           Most Popular
-        </Link>
+        </button>
       ) : (
         <span className="notPopularRecent">Most Popular</span>
       )}
@@ -41,9 +34,9 @@ const PopularOrRecent = props => {
 };
 
 PopularOrRecent.propTypes = {
-  topic_slug: PropTypes.string,
-  stateSorter: PropTypes.string,
-  sorter: PropTypes.function
+  topicSlug: PropTypes.string.isRequired,
+  stateSorter: PropTypes.string.isRequired,
+  sorter: PropTypes.func.isRequired,
 };
 
 export default PopularOrRecent;

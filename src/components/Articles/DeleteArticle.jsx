@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/AddArticle.css';
-import { Link } from '@reach/router';
+import '../../css/Articles/AddArticle.css';
 
-const DeleteArticle = props => {
+const DeleteArticle = (props) => {
+  const { deleteArticle, articleId } = props;
   return (
     <div
       className="deleteArticle"
-      onClick={() => props.deleteArticle(props.articleId)}
+      role="button"
+      tabIndex={0}
+      onClick={() => deleteArticle(articleId)}
+      onKeyDown={() => deleteArticle(articleId)}
     >
       <div className="addarticle">
         <div className="plus">
@@ -21,6 +24,9 @@ const DeleteArticle = props => {
   );
 };
 
-DeleteArticle.propTypes = {};
+DeleteArticle.propTypes = {
+  deleteArticle: PropTypes.func.isRequired,
+  articleId: PropTypes.string.isRequired,
+};
 
 export default DeleteArticle;

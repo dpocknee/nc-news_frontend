@@ -12,8 +12,9 @@ class User extends Component {
     comments: [],
     isLoading: true,
     avatarUrl: 200,
-    placeHolder: true
+    placeHolder: true,
   };
+
   render() {
     const user = this.state.user;
     return (
@@ -42,11 +43,13 @@ class User extends Component {
                 <h2>{user.username}</h2>
                 <div className="userInfo">
                   <p>
-                    Number of articles posted:{' '}
+                    Number of articles posted:
+                    {' '}
                     <b>{this.state.articles.length}</b>
                   </p>
                   <p>
-                    Number of comments posted:{' '}
+                    Number of comments posted:
+                    {' '}
                     <b>{this.state.comments.length}</b>
                   </p>
                 </div>
@@ -69,35 +72,35 @@ class User extends Component {
       </>
     );
   }
+
   componentDidMount() {
     const userUrl = `users/${this.props.username}`;
     return Promise.all([
       api.getInfo(userUrl),
       api.getInfo(`${userUrl}/articles`),
-      api.getInfo(`${userUrl}/comments`)
+      api.getInfo(`${userUrl}/comments`),
     ])
-      .then(([user, articles, comments]) => {
-        return Promise.all([user, articles, comments]);
-      })
+      .then(([user, articles, comments]) => Promise.all([user, articles, comments]))
       .then(([user, articles, comments]) => {
         this.setState({
           user,
           articles,
           comments,
-          isLoading: false
+          isLoading: false,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         utils.errorHandler(err);
       });
   }
-  checkImage = val => {
+
+  checkImage = (val) => {
     this.setState({ placeHolder: val });
   };
 }
 
 User.propTypes = {
-  username: PropTypes.string
+  username: PropTypes.string,
 };
 
 export default User;

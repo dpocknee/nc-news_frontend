@@ -11,101 +11,90 @@ class GroupOfArticles extends Component {
   state = {
     articles: [],
     isLoading: true,
-    sorter: 'created_at'
-  };
-  render() {
-    const textInput = this.props.searchInfo
-      ? this.props.searchInfo.searchInfo.searchbox
-        ? this.props.searchInfo.searchInfo.searchbox
-        : false
-      : false;
-    const filteredArticles = utils.filterer(this.state.articles, textInput);
-    const sortedArticles = utils.sortedArticles(
-      filteredArticles,
-      this.state.sorter
-    );
-    const searchResults = textInput
-      ? `${
-          filteredArticles.length
-        } articles found for search query "${textInput}".`
-      : `${filteredArticles.length} articles found.`;
-
-    return (
-      <div>
-        <PopularOrRecent
-          topic_slug={this.props.topic_slug}
-          sorter={this.sorter}
-          stateSorter={this.state.sorter}
-        />
-        {textInput && <p className="topVarious">{searchResults}</p>}
-        {localStorage.getItem('ncuser') && this.props.topic_slug && (
-          <AddArticle
-            topic_slug={this.props.topic_slug}
-            newAddition={this.newAddition}
-          />
-        )}
-        {this.state.isLoading && (
-          <p className="topVarious">... loading articles ...</p>
-        )}
-        {!this.state.isLoading &&
-          sortedArticles.map((article, index) => (
-            <Article key={`article${index}`} articleInfo={article} />
-          ))}
-      </div>
-    );
-  }
-  sorter = type => {
-    this.setState(state => {
-      const currentArticles = state.articles;
-      const sortedCurrentArticles = utils.sortedArticles(currentArticles, type);
-      return { sorter: type, articles: sortedCurrentArticles };
-    });
+    sorter: 'created_at',
   };
 
   componentDidMount() {
-    const typeOfInfo = this.props.topic_slug
-      ? `topics/${this.props.topic_slug}/articles`
-      : 'articles';
+    const { topicSlug } = this.props;
+    const typeOfInfo = topicSlug ? `topics/${topicSlug}/articles` : 'articles';
     api
       .getInfo(typeOfInfo)
-      .then(articles => {
+      .then((articles) => {
         this.setState({ articles, isLoading: false });
       })
       .catch(err => utils.errorHandler(err));
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      !prevState.isLoading &&
-      this.props.topic_slug !== prevProps.topic_slug
-    ) {
+    const { topicSlug } = this.props;
+    if (!prevState.isLoading && topicSlug !== prevProps.topicSlug) {
+      /* eslint react/no-did-update-set-state: 0 */
       this.setState({ isLoading: true });
     }
-    if (this.props.topic_slug !== prevProps.topic_slug) {
-      const typeOfInfo =
-        this.props.topic_slug && this.props.topic_slug !== prevProps.topic_slug
-          ? `topics/${this.props.topic_slug}/articles`
-          : 'articles';
+    if (topicSlug !== prevProps.topicSlug) {
+      const typeOfInfo = topicSlug && topicSlug !== prevProps.topicSlug
+        ? `topics/${topicSlug}/articles`
+        : 'articles';
       api
         .getInfo(typeOfInfo)
-        .then(articles => {
+        .then((articles) => {
           this.setState({
             articles,
-            isLoading: false
+            isLoading: false,
           });
         })
         .catch(err => utils.errorHandler(err));
     }
   }
-  newAddition = postedArticle => {
-    this.setState(state => {
-      return { articles: [...state.articles, postedArticle] };
+
+  sorter = (type) => {
+    this.setState((state) => {
+      const currentArticles = state.articles;
+      const sortedCurrentArticles = utils.sortedArticles(currentArticles, type);
+      return { sorter: type, articles: sortedCurrentArticles };
     });
   };
+
+  newAddition = (postedArticle) => {
+    this.setState(state => ({ articles: [...state.articles, postedArticle] }));
+  };
+
+  render() {
+    const { searchInfo, topicSlug } = this.props;
+    const { articles, sorter, isLoading } = this.state;
+    const textInput = searchInfo
+      ? searchInfo.searchInfo.searchbox
+        ? searchInfo.searchInfo.searchbox
+        : false
+      : false;
+    const filteredArticles = utils.filterer(articles, textInput);
+    const sortedArticles = utils.sortedArticles(filteredArticles, sorter);
+    const searchResults = textInput
+      ? `${filteredArticles.length} articles found for search query "${textInput}".`
+      : `${filteredArticles.length} articles found.`;
+
+    return (
+      <div>
+        <PopularOrRecent topicSlug={topicSlug} sorter={this.sorter} stateSorter={sorter} />
+        {textInput && <p className="topVarious">{searchResults}</p>}
+        {localStorage.getItem('ncuser') && topicSlug && (
+          <AddArticle topicSlug={topicSlug} newAddition={this.newAddition} />
+        )}
+        {isLoading && <p className="topVarious">... loading articles ...</p>}
+        {!isLoading
+          && sortedArticles.map(article => <Article key={article._id} articleInfo={article} />)}
+      </div>
+    );
+  }
 }
 
 GroupOfArticles.propTypes = {
-  searchInfo: PropTypes.object
+  searchInfo: PropTypes.shape({
+    searchInfo: PropTypes.shape({
+      searchbox: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  topicSlug: PropTypes.string.isRequired,
 };
 
 export default GroupOfArticles;
