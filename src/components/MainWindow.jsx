@@ -8,14 +8,18 @@ import BadRequest from './BadRequest';
 import NotFound from './NotFound';
 
 const MainWindow = props => {
-  const { searchInfo } = props;
+  const { searchInfo, loggedIn } = props;
   return (
     <main>
       <Router>
         <GroupOfArticles path="/" />
-        <GroupOfArticles path="/articles" searchInfo={searchInfo} />
-        <GroupOfArticles path="/topics/:topicSlug/articles" searchInfo={searchInfo} />
-        <IndividualArticle path="/articles/:articleId" />
+        <GroupOfArticles path="/articles" searchInfo={searchInfo} loggedIn={loggedIn} />
+        <GroupOfArticles
+          path="/topics/:topicSlug/articles"
+          searchInfo={searchInfo}
+          loggedIn={loggedIn}
+        />
+        <IndividualArticle path="/articles/:articleId" loggedIn={loggedIn} />
         <User path="/users/:username" />
         <BadRequest path="/error" />
         <NotFound default />
@@ -26,6 +30,7 @@ const MainWindow = props => {
 
 MainWindow.propTypes = {
   searchInfo: PropTypes.string,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 MainWindow.defaultProps = {

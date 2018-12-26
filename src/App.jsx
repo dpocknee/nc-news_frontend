@@ -6,7 +6,7 @@ import MainWindow from './components/MainWindow';
 class App extends Component {
   state = {
     searchInfo: null,
-    // logged: false,
+    loggedIn: false,
   };
 
   searchHandler = (event, searchInfo) => {
@@ -16,21 +16,16 @@ class App extends Component {
     });
   };
 
-  // login = status => {
-  //   this.setState({ logged: status });
-  // };
+  login = status => {
+    this.setState({ loggedIn: status });
+  };
 
   render() {
-    const { searchInfo } = this.state;
-    console.log('searchInfo:', searchInfo);
+    const { searchInfo, loggedIn } = this.state;
     return (
       <div className="App">
-        <Navbar searchHandler={this.searchHandler} />
-        {' '}
-        {/* login={this.login} /> */}
-        <MainWindow searchInfo={searchInfo} />
-        {' '}
-        {/* login={this.login} /> */}
+        <Navbar searchHandler={this.searchHandler} login={this.login} />
+        <MainWindow searchInfo={searchInfo} loggedIn={loggedIn} />
       </div>
     );
   }

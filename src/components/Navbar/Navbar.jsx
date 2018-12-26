@@ -5,6 +5,7 @@ import SearchForm from './SearchForm';
 import Nav from './Nav';
 import * as api from '../../api';
 import Login from './Login';
+import * as utils from '../../utils/utils';
 
 class Navbar extends Component {
   state = {
@@ -19,7 +20,7 @@ class Navbar extends Component {
       .then(topics => {
         this.setState({ topics });
       })
-      .catch(console.log);
+      .catch(err => utils.errorHandler(err));
   }
 
   handleTextInput = event => {
@@ -40,7 +41,7 @@ class Navbar extends Component {
 
   render() {
     const { topics, searchbox, isSearching } = this.state;
-    // const { login } = this.props;
+    const { login } = this.props;
     return (
       <aside>
         <Toptitle />
@@ -52,9 +53,7 @@ class Navbar extends Component {
             searchButton={this.searchButton}
             isSearching={isSearching}
           />
-          <Login />
-          {' '}
-          {/* login={login} /> */}
+          <Login login={login} />
         </div>
       </aside>
     );
@@ -63,7 +62,7 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   searchHandler: PropTypes.func.isRequired,
-  // login: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 export default Navbar;

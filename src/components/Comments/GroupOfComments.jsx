@@ -38,11 +38,11 @@ class GroupOfComments extends Component {
   };
 
   render() {
-    const { articleId } = this.props;
+    const { articleId, loggedIn } = this.props;
     const { comments } = this.state;
     return (
       <section>
-        {localStorage.getItem('ncuser') && (
+        {loggedIn && localStorage.getItem('ncuser') && (
           <AddComment articleId={articleId} newAddition={this.updateCommentsWithAddition} />
         )}
         {comments.map(comment => (
@@ -55,6 +55,7 @@ class GroupOfComments extends Component {
 
 GroupOfComments.propTypes = {
   articleId: PropTypes.string.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 export default GroupOfComments;

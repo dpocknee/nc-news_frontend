@@ -24,13 +24,13 @@ class IndividualArticle extends Component {
   }
 
   render() {
-    const { articleId } = this.props;
+    const { articleId, loggedIn } = this.props;
     const { article, isLoading } = this.state;
     return (
       !isLoading && (
         <section>
           <Article articleInfo={article} />
-          <GroupOfComments articleId={articleId} />
+          <GroupOfComments articleId={articleId} loggedIn={loggedIn} />
         </section>
       )
     );
@@ -39,6 +39,7 @@ class IndividualArticle extends Component {
 
 IndividualArticle.propTypes = {
   articleId: PropTypes.string,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 IndividualArticle.defaultProps = {

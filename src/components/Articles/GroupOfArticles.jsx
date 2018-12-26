@@ -60,8 +60,7 @@ class GroupOfArticles extends Component {
   };
 
   render() {
-    const { searchInfo, topicSlug } = this.props;
-    console.log('groupofArticles:', searchInfo);
+    const { searchInfo, topicSlug, loggedIn } = this.props;
     const { articles, sorter, isLoading } = this.state;
     const textInput = searchInfo ? searchInfo || false : false;
     const filteredArticles = utils.filterer(articles, textInput);
@@ -74,7 +73,7 @@ class GroupOfArticles extends Component {
       <div>
         <PopularOrRecent topicSlug={topicSlug} sorter={this.sorter} stateSorter={sorter} />
         {textInput && <p className="topVarious">{searchResults}</p>}
-        {localStorage.getItem('ncuser') && topicSlug && (
+        {loggedIn && localStorage.getItem('ncuser') && topicSlug && (
           <AddArticle topicSlug={topicSlug} newAddition={this.newAddition} />
         )}
         {isLoading && <p className="topVarious">... loading articles ...</p>}
@@ -88,6 +87,7 @@ class GroupOfArticles extends Component {
 GroupOfArticles.propTypes = {
   searchInfo: PropTypes.string,
   topicSlug: PropTypes.string,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 GroupOfArticles.defaultProps = {
