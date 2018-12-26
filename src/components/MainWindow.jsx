@@ -25,9 +25,7 @@ const MainWindow = props => {
 };
 
 MainWindow.propTypes = {
-  searchInfo: PropTypes.shape({
-    searchbox: PropTypes.string,
-  }),
+  searchInfo: PropTypes.string,
 };
 
 MainWindow.defaultProps = {

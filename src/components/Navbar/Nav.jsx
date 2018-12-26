@@ -13,11 +13,7 @@ const Nav = props => {
         </li>
         {topics.map(topic => (
           <li key={`navTopics${topic.slug}`}>
-            <Link to={`/topics/${topic.slug}/articles`}>
-              {topic.title}
-              {' '}
-Articles
-            </Link>
+            <Link to={`/topics/${topic.slug}/articles`}>{`${topic.title} Articles`}</Link>
           </li>
         ))}
       </ul>
@@ -26,7 +22,17 @@ Articles
 };
 
 Nav.propTypes = {
-  topics: PropTypes.array.isRequired,
+  topics: PropTypes.arrayOf(
+    PropTypes.shape({
+      '​_id': PropTypes.string,
+      slug: PropTypes.string,
+      title: PropTypes.string,
+    }),
+  ),
+};
+
+Nav.defaultProps = {
+  topics: PropTypes.array,
 };
 
 export default Nav;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Popup from 'reactjs-popup';
 import * as api from '../../api';
 import '../../css/Navbar/Login.css';
@@ -19,7 +19,7 @@ class Login extends Component {
 
   handleSubmit = event => {
     const { username } = this.state;
-    const { login } = this.props;
+    // const { login } = this.props;
     event.preventDefault();
     return api
       .getInfo(`users/${username}`)
@@ -27,7 +27,7 @@ class Login extends Component {
         localStorage.setItem('ncuser', username);
         localStorage.setItem('ncid', user._id);
         this.setState({ loginStatus: 'in', username: '' });
-        login(true);
+        // login(true);
       })
       .catch(() => {
         this.setState({ loginStatus: 'error' });
@@ -43,7 +43,7 @@ class Login extends Component {
   };
 
   render() {
-    const { login } = this.props;
+    // const { login } = this.props;
     const { loggedOut, loginWindow, loginStatus } = this.state;
     return (
       <div className="loginButtonContainer">
@@ -58,7 +58,7 @@ class Login extends Component {
               type="button"
               onClick={() => {
                 localStorage.clear();
-                login(false);
+                // login(false);
                 this.changeModal('loggedOut', true);
               }}
               className="loginButton loggedin"
@@ -149,8 +149,8 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
-};
+// Login.propTypes = {
+//   login: PropTypes.func.isRequired,
+// };
 
 export default Login;

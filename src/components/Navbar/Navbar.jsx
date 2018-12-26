@@ -9,7 +9,6 @@ import Login from './Login';
 class Navbar extends Component {
   state = {
     searchbox: '',
-    searchParameters: [],
     topics: [],
     isSearching: false,
   };
@@ -27,21 +26,8 @@ class Navbar extends Component {
     this.setState({ searchbox: event.target.value });
   };
 
-  handleCheckbox = event => {
-    const theBox = {
-      name: event.target.name,
-      checked: event.target.checked,
-    };
-    this.setState(state => {
-      const checked = theBox.checked
-        ? [...state.searchParameters, theBox.name]
-        : state.searchParameters.filter(box => box !== theBox.name);
-      return { searchParameters: checked };
-    });
-  };
-
   searchButton = event => {
-    const { isSearching, searchbox, searchParameters } = this.state;
+    const { isSearching, searchbox } = this.state;
     const { searchHandler } = this.props;
     this.setState(state => {
       const reverseSearching = !state.isSearching;
@@ -49,17 +35,12 @@ class Navbar extends Component {
       return { isSearching: reverseSearching, searchbox: clearBox };
     });
     const searchToSend = isSearching ? '' : searchbox;
-    return searchHandler(event, {
-      searchInfo: {
-        searchbox: searchToSend,
-        searchParameters,
-      },
-    });
+    return searchHandler(event, searchToSend);
   };
 
   render() {
     const { topics, searchbox, isSearching } = this.state;
-    const { login } = this.props;
+    // const { login } = this.props;
     return (
       <aside>
         <Toptitle />
@@ -71,7 +52,9 @@ class Navbar extends Component {
             searchButton={this.searchButton}
             isSearching={isSearching}
           />
-          <Login login={login} />
+          <Login />
+          {' '}
+          {/* login={login} /> */}
         </div>
       </aside>
     );
@@ -80,7 +63,7 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   searchHandler: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
+  // login: PropTypes.func.isRequired,
 };
 
 export default Navbar;
