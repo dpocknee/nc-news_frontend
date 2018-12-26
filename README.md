@@ -1,44 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Northcoders News (Frontend)
 
-## Available Scripts
+This is the frontend of a full stack reddit-style message board written in React, completed as part of the intensive full time Developer Pathway software development course at [Northcoders](http://www.northcoders.com) in Manchester between October and December 2018.
 
-In the project directory, you can run:
+- The deployed version of the site can be found here: [http://confident-gates-cb16d1.netlify.com](http://confident-gates-cb16d1.netlify.com).
+- The deployed API for the backend can be found here: [https://frozen-river-28585.herokuapp.com/api](https://frozen-river-28585.herokuapp.com/api)
+- The github repo for the backend API can be found here: [https://github.com/dpocknee/nc-news_backend](https://github.com/dpocknee/nc-news_backend)
+
+The back end consists of a RESTful API which allows access to a Mongo database hosted on mLab.
+
+The front end serves this data in a dynamic React application.
+
+Users can vote on articles and comments, and logged-in users can add or delete comments or articles.
+
+## Using the website
+
+- Users can view all articles by and any comments associated with them by clicking on the title of the article.
+- Articles can be voted up or down and can be sorted by popularity or chronology, as well as being searched.
+- Users can log in to the site and, when this is done, they are able to add articles to the site, as well as add comments and delete their own comments under articles.
+
+## Getting Started
+
+To get use the website, you can either go to the deployed version at [http://confident-gates-cb16d1.netlify.com](http://confident-gates-cb16d1.netlify.com) or clone down this repo, run `npm install` to install any dependencies.
+
+Then, n the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This runs the app in the development mode.<br>
+You can open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+## Deployment
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This website was deployed using [http://www.netlify.com](http://www.netlify.com).
 
-### `npm run build`
+## Built With
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- It uses the airbnb linting rules.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Authors
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **David Pocknee** - [http://www.davidpocknee.com](http://www.davidpocknee.com)
 
-### `npm run eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Anti-copyright
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Acknowledgments
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Northcoders [http://www.northcoders.com](http://www.northcoders.com)

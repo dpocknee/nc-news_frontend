@@ -87,6 +87,7 @@ class Login extends Component {
             <p>You have been logged out.</p>
             <button
               type="button"
+              className="loginButton loggedout"
               onClick={() => {
                 this.changeModal('loggedOut', false);
                 this.changeLoginStatus('out');
@@ -128,7 +129,12 @@ class Login extends Component {
                     id="usernameInput"
                     onChange={this.handleInput}
                   />
-                  <input type="submit" value="Login" onClick={this.handleSubmit} />
+                  <input
+                    className="loginButton loggedin"
+                    type="submit"
+                    value="Login"
+                    onClick={this.handleSubmit}
+                  />
                 </form>
               )}
               {loginStatus === 'error' && <p>Not a valid username.</p>}
@@ -136,7 +142,11 @@ class Login extends Component {
               {loginStatus === 'in' && (
                 <div>
                   <p>{`Logged in as ${localStorage.getItem('ncuser')}.`}</p>
-                  <button type="button" onClick={() => this.changeModal('loginWindow', false)}>
+                  <button
+                    type="button"
+                    className="loginButton loggedout"
+                    onClick={() => this.changeModal('loginWindow', false)}
+                  >
                     OK
                   </button>
                 </div>

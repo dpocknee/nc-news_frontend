@@ -28,7 +28,6 @@ class GroupOfArticles extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { topicSlug } = this.props;
     if (!prevState.isLoading && topicSlug !== prevProps.topicSlug) {
-      /* eslint react/no-did-update-set-state: 0 */
       this.setState({ isLoading: true });
     }
     if (topicSlug !== prevProps.topicSlug) {
@@ -87,12 +86,13 @@ class GroupOfArticles extends Component {
 GroupOfArticles.propTypes = {
   searchInfo: PropTypes.string,
   topicSlug: PropTypes.string,
-  loggedIn: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool,
 };
 
 GroupOfArticles.defaultProps = {
   searchInfo: null,
   topicSlug: undefined,
+  loggedIn: null,
 };
 
 export default GroupOfArticles;

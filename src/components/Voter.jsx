@@ -7,7 +7,7 @@ import '../css/Voter.css';
 class Voter extends Component {
   state = {
     voteMod: 0,
-    optimisticVote: this.props.componentInfo.votes,
+    optimisticVote: 0,
   };
 
   componentDidMount() {
@@ -20,8 +20,6 @@ class Voter extends Component {
     const currentVoteNum = componentInfo.votes;
     const oldVoteNum = prevProps.componentInfo.votes;
     if (currentVoteNum !== oldVoteNum) {
-      // there has been a change in props
-      /* eslint react/no-did-update-set-state: 0 */
       this.setState({ optimisticVote: currentVoteNum, voteMod: 0 });
     }
   }
