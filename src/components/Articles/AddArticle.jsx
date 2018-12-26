@@ -106,12 +106,12 @@ class AddArticle extends Component {
             <button type="submit" onClick={this.handleSubmit} className="info5 postArticleButton">
               Post Article
             </button>
+            {!formValidation && (
+              <div className="addarticle">
+                <p>Please fill out all fields in the form.</p>
+              </div>
+            )}
           </form>
-        )}
-        {!formValidation && (
-          <div className="addarticle">
-            <p>Please fill out all fields in the form.</p>
-          </div>
         )}
       </div>
     );

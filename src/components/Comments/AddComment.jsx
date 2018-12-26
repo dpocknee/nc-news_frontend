@@ -8,6 +8,7 @@ class AddComment extends Component {
   state = {
     textarea: '',
     addForm: false,
+    formValidation: true,
   };
 
   handleInput = (event, type) => {
@@ -15,7 +16,7 @@ class AddComment extends Component {
     this.setState({ [type]: eventValue });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     const { textarea } = this.state;
     const { newAddition, articleId } = this.props;
     event.preventDefault();
@@ -23,23 +24,28 @@ class AddComment extends Component {
       body: textarea,
       created_by: localStorage.getItem('ncid'),
     };
-    api
-      .addInfo(`articles/${articleId}/comments`, body)
-      .then((res) => {
-        newAddition(res);
-      })
-      .catch(err => utils.errorHandler(err));
+    if (textarea === '') {
+      this.setState({ formValidation: false });
+    } else {
+      api
+        .addInfo(`articles/${articleId}/comments`, body)
+        .then(res => {
+          newAddition(res);
+          this.expandForm();
+        })
+        .catch(err => utils.errorHandler(err));
+    }
   };
 
   expandForm = () => {
-    this.setState((state) => {
+    this.setState(state => {
       const newValue = !state.addForm;
       return { addForm: newValue };
     });
   };
 
   render() {
-    const { addForm } = this.state;
+    const { addForm, formValidation } = this.state;
     return (
       <div className="wholeCommentAdder">
         <div
@@ -72,6 +78,14 @@ class AddComment extends Component {
             <button type="submit" onClick={this.handleSubmit} className="info5 postCommentButton">
               Post Comment
             </button>
+            {!formValidation && (
+              <>
+                <div />
+                <div className="addarticle">
+                  <p>Please fill out all fields in the form.</p>
+                </div>
+              </>
+            )}
           </form>
         )}
       </div>

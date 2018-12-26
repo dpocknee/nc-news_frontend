@@ -1,11 +1,21 @@
+.deleteCommentWrapper div:hover {
+  color: #760f0f;
+  cursor: pointer;
+}
+
+.deleteComment :hover {
+  text-decoration: none;
+  color: #760f0f;
+}
+
 .deleteComment {
   display: flex;
   flex-direction: row;
   color: #3c3176;
   vertical-align: middle;
   font-weight: bold;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   width: 200px;
   align-content: center;
 }
@@ -22,15 +32,11 @@
   margin-left: 5px;
 }
 
-.deleteCommentWrapper div:hover {
-  color: #760f0f;
-  cursor: pointer;
+.deleteCommentText {
+  height: 20px;
+  margin-top: 14px;
 }
 
-.deleteCommentText p {
-  margin-top: 14px;
-  text-decoration: none;
-}
 .commentOpaque {
   opacity: 0;
   transition: 0.8s ease-out;

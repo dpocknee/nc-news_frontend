@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../css/Comments/DeleteComment.css';
 
-const DeleteComment = (props) => {
+const DeleteComment = props => {
   const { commentId, deleteComment, commentOpaque } = props;
   return (
     <div
@@ -22,9 +22,7 @@ const DeleteComment = (props) => {
         <div className="plus">
           <i className="fas fa-times-circle fa-2x deleter" />
         </div>
-        <div className="deleteCommentText">
-          <p>Delete Comment</p>
-        </div>
+        <div className="deleteCommentText">Delete Comment</div>
       </div>
     </div>
   );
@@ -32,16 +30,6 @@ const DeleteComment = (props) => {
 
 DeleteComment.propTypes = {
   commentId: PropTypes.string.isRequired,
-  commentInfo: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    created_by: {
-      username: PropTypes.string.isRequired,
-      _id: PropTypes.string.isRequired,
-    },
-    created_at: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-  }).isRequired,
   deleteComment: PropTypes.func.isRequired,
   commentOpaque: PropTypes.func.isRequired,
 };

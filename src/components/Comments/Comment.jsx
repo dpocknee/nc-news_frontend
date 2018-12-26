@@ -14,6 +14,7 @@ class Comment extends Component {
   componentDidUpdate(prevProps) {
     const { commentInfo } = this.props;
     if (prevProps.commentInfo !== commentInfo) {
+      /* eslint react/no-did-update-set-state:0 */
       this.setState({ deleted: false });
     }
   }

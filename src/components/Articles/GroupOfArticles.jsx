@@ -62,8 +62,6 @@ class GroupOfArticles extends Component {
   render() {
     const { searchInfo, topicSlug } = this.props;
     const { articles, sorter, isLoading } = this.state;
-    console.log('searchInfo:', searchInfo);
-    console.log('topicSlug:', topicSlug);
     const textInput = searchInfo
       ? searchInfo.searchInfo.searchbox
         ? searchInfo.searchInfo.searchbox
