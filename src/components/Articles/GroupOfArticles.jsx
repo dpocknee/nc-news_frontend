@@ -62,6 +62,8 @@ class GroupOfArticles extends Component {
   render() {
     const { searchInfo, topicSlug } = this.props;
     const { articles, sorter, isLoading } = this.state;
+    console.log('searchInfo:', searchInfo);
+    console.log('topicSlug:', topicSlug);
     const textInput = searchInfo
       ? searchInfo.searchInfo.searchbox
         ? searchInfo.searchInfo.searchbox
@@ -88,18 +90,18 @@ class GroupOfArticles extends Component {
   }
 }
 
-// GroupOfArticles.propTypes = {
-//   searchInfo: PropTypes.shape({
-//     searchInfo: PropTypes.shape({
-//       searchbox: PropTypes.string,
-//     }).isRequired,
-//   }),
-//   topicSlug: PropTypes.string,
-// };
+GroupOfArticles.propTypes = {
+  searchInfo: PropTypes.shape({
+    searchInfo: PropTypes.shape({
+      searchbox: PropTypes.string,
+    }).isRequired,
+  }),
+  topicSlug: PropTypes.string,
+};
 
-// GroupOfArticles.defaultProps = {
-//   searchInfo: null,
-//   topicSlug: undefined,
-// };
+GroupOfArticles.defaultProps = {
+  searchInfo: null,
+  topicSlug: undefined,
+};
 
 export default GroupOfArticles;

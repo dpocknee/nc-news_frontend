@@ -61,13 +61,16 @@ class Comment extends Component {
 Comment.propTypes = {
   commentInfo: PropTypes.shape({
     _id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    created_by: {
-      username: PropTypes.string.isRequired,
-      _id: PropTypes.string.isRequired,
-    },
-    created_at: PropTypes.string.isRequired,
+    belongs_to: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
+    created_at: PropTypes.string.isRequired,
+    created_by: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      avatar_url: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired,
+    }).isRequired,
+    votes: PropTypes.number.isRequired,
   }).isRequired,
   deleteComment: PropTypes.func.isRequired,
 };

@@ -19,11 +19,11 @@ class GroupOfComments extends Component {
       .catch(err => utils.errorHandler(err));
   }
 
-  deleteComment = (commentId) => {
+  deleteComment = commentId => {
     api
       .apiDeleteComment(`comments/${commentId}`)
       .then(() => {
-        this.setState((state) => {
+        this.setState(state => {
           const filteredComments = state.comments.filter(
             comment => String(comment._id) !== String(commentId),
           );
@@ -33,7 +33,7 @@ class GroupOfComments extends Component {
       .catch(err => utils.errorHandler(err));
   };
 
-  updateCommentsWithAddition = (postedComment) => {
+  updateCommentsWithAddition = postedComment => {
     this.setState(state => ({ comments: [postedComment, ...state.comments] }));
   };
 

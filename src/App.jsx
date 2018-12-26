@@ -7,8 +7,9 @@ class App extends Component {
   state = {
     topics: [],
     searchInfo: null,
-    logged: false
+    logged: false,
   };
+
   render() {
     return (
       <div className="App">
@@ -17,12 +18,14 @@ class App extends Component {
       </div>
     );
   }
+
   searchHandler = (event, searchInfo) => {
     event.preventDefault();
     this.setState({
-      searchInfo: searchInfo
+      searchInfo,
     });
   };
+
   login = status => {
     this.setState({ logged: status });
   };
