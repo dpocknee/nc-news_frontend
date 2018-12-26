@@ -11,22 +11,50 @@ class User extends Component {
     articles: [],
     comments: [],
     isLoading: true,
-    avatarUrl: 200,
-    placeHolder: true
+    placeHolder: true,
   };
+
+  componentDidMount() {
+    const { username } = this.props;
+    const userUrl = `users/${username}`;
+    return Promise.all([
+      api.getInfo(userUrl),
+      api.getInfo(`${userUrl}/articles`),
+      api.getInfo(`${userUrl}/comments`),
+    ])
+      .then(([user, articles, comments]) => Promise.all([user, articles, comments]))
+      .then(([user, articles, comments]) => {
+        this.setState({
+          user,
+          articles,
+          comments,
+          isLoading: false,
+        });
+      })
+      .catch(err => {
+        utils.errorHandler(err);
+      });
+  }
+
+  checkImage = val => {
+    this.setState({ placeHolder: val });
+  };
+
   render() {
-    const user = this.state.user;
+    const {
+      user, isLoading, placeHolder, articles, comments,
+    } = this.state;
     return (
       <>
         <section className="userPage">
-          {this.state.isLoading ? (
+          {isLoading ? (
             <section>
               <h1 className="userLoading">...Loading...</h1>
             </section>
           ) : (
             <header>
               <figure>
-                {this.state.placeHolder ? (
+                {placeHolder ? (
                   <img
                     src={user.avatar_url}
                     onLoad={() => this.checkImage(true)}
@@ -42,12 +70,14 @@ class User extends Component {
                 <h2>{user.username}</h2>
                 <div className="userInfo">
                   <p>
-                    Number of articles posted:{' '}
-                    <b>{this.state.articles.length}</b>
+                    Number of articles posted:
+                    {' '}
+                    <b>{articles.length}</b>
                   </p>
                   <p>
-                    Number of comments posted:{' '}
-                    <b>{this.state.comments.length}</b>
+                    Number of comments posted:
+                    {' '}
+                    <b>{comments.length}</b>
                   </p>
                 </div>
               </section>
@@ -56,48 +86,27 @@ class User extends Component {
         </section>
         <section>
           <UserArticlesOrComments
-            isLoading={this.state.isLoading}
-            articlesOrComments={this.state.articles}
+            isLoading={isLoading}
+            articlesOrComments={articles}
             contentType="Articles"
           />
           <UserArticlesOrComments
-            isLoading={this.state.isLoading}
-            articlesOrComments={this.state.comments}
+            isLoading={isLoading}
+            articlesOrComments={comments}
             contentType="Comments"
           />
         </section>
       </>
     );
   }
-  componentDidMount() {
-    const userUrl = `users/${this.props.username}`;
-    return Promise.all([
-      api.getInfo(userUrl),
-      api.getInfo(`${userUrl}/articles`),
-      api.getInfo(`${userUrl}/comments`)
-    ])
-      .then(([user, articles, comments]) => {
-        return Promise.all([user, articles, comments]);
-      })
-      .then(([user, articles, comments]) => {
-        this.setState({
-          user,
-          articles,
-          comments,
-          isLoading: false
-        });
-      })
-      .catch(err => {
-        utils.errorHandler(err);
-      });
-  }
-  checkImage = val => {
-    this.setState({ placeHolder: val });
-  };
 }
 
 User.propTypes = {
-  username: PropTypes.string
+  username: PropTypes.string,
+};
+
+User.defaultProps = {
+  username: undefined,
 };
 
 export default User;

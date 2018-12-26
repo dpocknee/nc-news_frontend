@@ -4,17 +4,19 @@ import { Link } from '@reach/router';
 import { format } from 'date-fns';
 
 const Article = props => {
-  const info = props.articleInfo;
+  const { articleInfo, contentType } = props;
   return (
     <article>
       <header>
         <h1>
-          <Link to={`/articles/${info._id}`}>{info.title}</Link>
+          <Link to={`/articles/${articleInfo._id}`}>{articleInfo.title}</Link>
         </h1>
-        {props.contentType === 'Articles' && (
+        {contentType === 'Articles' && (
           <h3>
-            <Link to={`/articles/${info._id}`}>
-              ({format(info.created_at, 'DD-MM-YYYY HH:mm')})
+            <Link to={`/articles/${articleInfo._id}`}>
+              (
+              {format(articleInfo.created_at, 'DD-MM-YYYY HH:mm')}
+)
             </Link>
           </h3>
         )}
@@ -24,7 +26,10 @@ const Article = props => {
 };
 
 Article.propTypes = {
-  articleInfo: PropTypes.object.isRequired
+  articleInfo: PropTypes.shape({
+    created_at: PropTypes.string.isRequired,
+  }).isRequired,
+  contentType: PropTypes.string.isRequired,
 };
 
 export default Article;

@@ -5,37 +5,37 @@ import '../../css/User/User.css';
 import ArticleCondensed from './ArticleCondensed';
 
 const UserArticlesOrComments = props => {
-  const filteredArticlesOrComments =
-    props.contentType === 'Comments'
-      ? props.articlesOrComments.reduce(
-          (outputArr, comment) => {
-            if (!outputArr.ids.includes(comment.belongs_to._id)) {
-              outputArr.articles = [...outputArr.articles, comment.belongs_to];
-              outputArr.ids = [...outputArr.ids, comment.belongs_to._id];
-            }
-            return outputArr;
-          },
-          { ids: [], articles: [] }
-        ).articles
-      : props.articlesOrComments;
+  const { contentType, articlesOrComments, isLoading } = props;
+
+  const filteredArticlesOrComments = contentType === 'Comments'
+    ? articlesOrComments.reduce(
+      (outputArr, comment) => {
+        /* eslint no-param-reassign: 0 */
+        if (!outputArr.ids.includes(comment.belongs_to._id)) {
+          outputArr.articles = [...outputArr.articles, comment.belongs_to];
+          outputArr.ids = [...outputArr.ids, comment.belongs_to._id];
+        }
+        return outputArr;
+      },
+      { ids: [], articles: [] },
+    ).articles
+    : articlesOrComments;
   return (
     <div>
       <header className="topOfArticlesPage">
         <h1>
           <span className="groupArticlesHeader">
-            {props.contentType === 'Articles'
+            {contentType === 'Articles'
               ? 'Articles by this user'
               : 'This user has commented on the following articles'}
           </span>
         </h1>
       </header>
-      {props.isLoading && (
-        <p className="userLoading">... loading articles ...</p>
-      )}
-      {!props.isLoading &&
-        filteredArticlesOrComments.map((articleOrComment, index) => (
+      {isLoading && <p className="userLoading">... loading articles ...</p>}
+      {!isLoading
+        && filteredArticlesOrComments.map(articleOrComment => (
           <ArticleCondensed
-            key={`article${index}`}
+            key={articleOrComment._id}
             articleInfo={articleOrComment}
             contentType={props.contentType}
           />
@@ -45,8 +45,9 @@ const UserArticlesOrComments = props => {
 };
 
 UserArticlesOrComments.propTypes = {
-  articlesOrComments: PropTypes.array,
-  contentType: PropTypes.string
+  articlesOrComments: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  contentType: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default UserArticlesOrComments;

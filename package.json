@@ -8,6 +8,7 @@
     "date-fns": "^1.29.0",
     "datejs": "^1.0.0-rc3",
     "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-collapsible": "^2.3.2",
     "react-dom": "^16.6.3",
@@ -20,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "./node_modules/.bin/eslint ./src/"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,6 +34,18 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.1",
     "node-lipsum": "^1.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "post-test": "npm run lint"
+    }
   }
 }

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://frozen-river-28585.herokuapp.com/api';
 
-export const getInfo = async infoType => {
+export const getInfo = async (infoType) => {
   const { data } = await axios.get(`${BASE_URL}/${infoType}`);
   return data;
 };
@@ -17,7 +17,7 @@ export const addInfo = async (url, body) => {
   return data;
 };
 
-export const apiDeleteComment = async url => {
+export const apiDeleteComment = async (url) => {
   const { data } = await axios.delete(`${BASE_URL}/${url}`);
   return data;
 };

@@ -7,58 +7,55 @@ import * as utils from '../../utils/utils';
 
 class GroupOfComments extends Component {
   state = {
-    comments: []
+    comments: [],
   };
-  render() {
-    return (
-      <section>
-        {localStorage.getItem('ncuser') && (
-          <AddComment
-            articleId={this.props.article_id}
-            newAddition={this.updateCommentsWithAddition}
-          />
-        )}
-        {this.state.comments.map((comment, index) => (
-          <Comment
-            key={`comment${index}`}
-            commentInfo={comment}
-            deleteComment={this.deleteComment}
-          />
-        ))}
-      </section>
-    );
-  }
+
   componentDidMount() {
-    const typeOfInfo = `articles/${this.props.article_id}/comments`;
+    const { articleId } = this.props;
+    const typeOfInfo = `articles/${articleId}/comments`;
     api
       .getInfo(typeOfInfo)
-      .then(comments => {
-        this.setState({ comments, isLoading: false });
-      })
+      .then(comments => this.setState({ comments }))
       .catch(err => utils.errorHandler(err));
   }
+
   deleteComment = commentId => {
     api
       .apiDeleteComment(`comments/${commentId}`)
-      .then(deleted => {
+      .then(() => {
         this.setState(state => {
           const filteredComments = state.comments.filter(
-            comment => String(comment._id) !== String(commentId)
+            comment => String(comment._id) !== String(commentId),
           );
           return { comments: filteredComments };
         });
       })
       .catch(err => utils.errorHandler(err));
   };
+
   updateCommentsWithAddition = postedComment => {
-    this.setState(state => {
-      return { comments: [postedComment, ...state.comments] };
-    });
+    this.setState(state => ({ comments: [postedComment, ...state.comments] }));
   };
+
+  render() {
+    const { articleId, loggedIn } = this.props;
+    const { comments } = this.state;
+    return (
+      <section>
+        {loggedIn && localStorage.getItem('ncuser') && (
+          <AddComment articleId={articleId} newAddition={this.updateCommentsWithAddition} />
+        )}
+        {comments.map(comment => (
+          <Comment key={comment._id} commentInfo={comment} deleteComment={this.deleteComment} />
+        ))}
+      </section>
+    );
+  }
 }
 
 GroupOfComments.propTypes = {
-  searchInfo: PropTypes.array
+  articleId: PropTypes.string.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 export default GroupOfComments;

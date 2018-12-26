@@ -8,21 +8,12 @@ import * as utils from '../../utils/utils';
 class IndividualArticle extends Component {
   state = {
     article: {},
-    comments: [],
-    isLoading: true
+    isLoading: true,
   };
-  render() {
-    return (
-      !this.state.isLoading && (
-        <section>
-          <Article articleInfo={this.state.article} />
-          <GroupOfComments article_id={this.props.article_id} />
-        </section>
-      )
-    );
-  }
+
   componentDidMount() {
-    const typeOfInfo = `articles/${this.props.article_id}`;
+    const { articleId } = this.props;
+    const typeOfInfo = `articles/${articleId}`;
     api
       .getInfo(typeOfInfo)
       .then(article => {
@@ -31,10 +22,28 @@ class IndividualArticle extends Component {
       })
       .catch(err => utils.errorHandler(err));
   }
+
+  render() {
+    const { articleId, loggedIn } = this.props;
+    const { article, isLoading } = this.state;
+    return (
+      !isLoading && (
+        <section>
+          <Article articleInfo={article} />
+          <GroupOfComments articleId={articleId} loggedIn={loggedIn} />
+        </section>
+      )
+    );
+  }
 }
 
 IndividualArticle.propTypes = {
-  article_id: PropTypes.string
+  articleId: PropTypes.string,
+  loggedIn: PropTypes.bool.isRequired,
+};
+
+IndividualArticle.defaultProps = {
+  articleId: undefined,
 };
 
 export default IndividualArticle;

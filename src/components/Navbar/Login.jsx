@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as api from '../../api';
 import Popup from 'reactjs-popup';
+import * as api from '../../api';
 import '../../css/Navbar/Login.css';
 
 class Login extends Component {
@@ -9,20 +9,56 @@ class Login extends Component {
     username: '',
     loginStatus: 'out',
     loginWindow: false,
-    loggedOut: false
+    loggedOut: false,
   };
+
+  handleInput = event => {
+    const inputText = event.target.value;
+    this.setState({ username: inputText });
+  };
+
+  handleSubmit = event => {
+    const { username } = this.state;
+    const { login } = this.props;
+    event.preventDefault();
+    return api
+      .getInfo(`users/${username}`)
+      .then(user => {
+        localStorage.setItem('ncuser', username);
+        localStorage.setItem('ncid', user._id);
+        this.setState({ loginStatus: 'in', username: '' });
+        login(true);
+      })
+      .catch(() => {
+        this.setState({ loginStatus: 'error' });
+      });
+  };
+
+  changeModal = (chosenWindow, openClose) => {
+    this.setState({ [chosenWindow]: openClose });
+  };
+
+  changeLoginStatus = outOrIn => {
+    this.setState({ loginStatus: outOrIn });
+  };
+
   render() {
+    const { login } = this.props;
+    const { loggedOut, loginWindow, loginStatus } = this.state;
     return (
       <div className="loginButtonContainer">
         {localStorage.getItem('ncuser') ? (
           <div className="navbarLogin">
             <p className="loggedInText">
-              Logged in as <b>{localStorage.getItem('ncuser')}</b>
+              Logged in as
+              {' '}
+              <b>{localStorage.getItem('ncuser')}</b>
             </p>
             <button
+              type="button"
               onClick={() => {
                 localStorage.clear();
-                this.props.login(false);
+                login(false);
                 this.changeModal('loggedOut', true);
               }}
               className="loginButton loggedin"
@@ -32,10 +68,9 @@ class Login extends Component {
           </div>
         ) : (
           <div className="navbarLogin">
-            <p className="notLoggedInText">
-              Log in to post comments or articles.
-            </p>
+            <p className="notLoggedInText">Log in to post comments or articles.</p>
             <button
+              type="button"
               onClick={() => this.changeModal('loginWindow', true)}
               className="loginButton loggedout"
             >
@@ -44,13 +79,14 @@ class Login extends Component {
           </div>
         )}
         <Popup
-          open={this.state.loggedOut}
+          open={loggedOut}
           closeOnDocumentClick
           onClose={() => this.changeModal('loggedOut', false)}
         >
           <div className="loginPopup">
             <p>You have been logged out.</p>
             <button
+              type="button"
               onClick={() => {
                 this.changeModal('loggedOut', false);
                 this.changeLoginStatus('out');
@@ -61,7 +97,7 @@ class Login extends Component {
           </div>
         </Popup>
         <Popup
-          open={this.state.loginWindow}
+          open={loginWindow}
           closeOnDocumentClick
           onClose={() => this.changeModal('loginWindow', false)}
           className="loginPopup"
@@ -70,12 +106,20 @@ class Login extends Component {
             <header>
               <h1>Login</h1>
               <p>
-                Possible usernames you can use are <br /> <b>jessjelly</b>,{' '}
-                <b>weegembump</b> or <b>tickle122</b>
+                Possible usernames you can use are
+                <br />
+                <b>jessjelly</b>
+                {', '}
+                <b>weegembump</b>
+                {', '}
+                or
+                {' '}
+                <b>tickle122</b>
+.
               </p>
             </header>
             <section>
-              {this.state.loginStatus !== 'in' && (
+              {loginStatus !== 'in' && (
                 <form>
                   <label htmlFor="usernameInput">Username: </label>
                   <input
@@ -84,25 +128,15 @@ class Login extends Component {
                     id="usernameInput"
                     onChange={this.handleInput}
                   />
-                  <input
-                    type="submit"
-                    value="Login"
-                    onClick={this.handleSubmit}
-                  />
+                  <input type="submit" value="Login" onClick={this.handleSubmit} />
                 </form>
               )}
-              {this.state.loginStatus === 'error' && (
-                <p>Not a valid username.</p>
-              )}
-              {this.state.loginStatus === 'requestError' && (
-                <p>Unable to login.</p>
-              )}
-              {this.state.loginStatus === 'in' && (
+              {loginStatus === 'error' && <p>Not a valid username.</p>}
+              {loginStatus === 'requestError' && <p>Unable to login.</p>}
+              {loginStatus === 'in' && (
                 <div>
-                  <p>Logged in as {localStorage.getItem('ncuser')}.</p>
-                  <button
-                    onClick={() => this.changeModal('loginWindow', false)}
-                  >
+                  <p>{`Logged in as ${localStorage.getItem('ncuser')}.`}</p>
+                  <button type="button" onClick={() => this.changeModal('loginWindow', false)}>
                     OK
                   </button>
                 </div>
@@ -113,35 +147,10 @@ class Login extends Component {
       </div>
     );
   }
-  handleInput = event => {
-    const inputText = event.target.value;
-    this.setState({ username: inputText });
-  };
-  handleSubmit = event => {
-    event.preventDefault();
-    api
-      .getInfo(`users/${this.state.username}`)
-      .then(user => {
-        localStorage.setItem('ncuser', this.state.username);
-        localStorage.setItem('ncid', user._id);
-        this.setState({ loginStatus: 'in', username: '' });
-        this.props.login(true);
-      })
-      .catch(err => {
-        this.setState({ loginStatus: 'error' });
-      });
-  };
-  changeModal = (chosenWindow, openClose) => {
-    this.setState({ [chosenWindow]: openClose });
-  };
-
-  changeLoginStatus = outOrIn => {
-    this.setState({ loginStatus: outOrIn });
-  };
 }
 
 Login.propTypes = {
-  login: PropTypes.function
+  login: PropTypes.func.isRequired,
 };
 
 export default Login;

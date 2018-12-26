@@ -1,7 +1,11 @@
 import React from 'react';
 import '../../css/Navbar/SearchForm.css';
+import PropTypes from 'prop-types';
 
 const SearchForm = props => {
+  const {
+    searchbox, handleTextInput, searchButton, isSearching,
+  } = props;
   return (
     <div className="searchForm">
       <form>
@@ -10,20 +14,24 @@ const SearchForm = props => {
           type="text"
           name="searchbox"
           id="searchbox"
-          value={props.searchbox}
-          onChange={props.handleTextInput}
-        />{' '}
+          value={searchbox}
+          onChange={handleTextInput}
+        />
+        {' '}
         <br />
-        <button
-          className="searchButton"
-          type="submit"
-          onClick={props.searchButton}
-        >
-          {props.isSearching ? 'Clear Search' : 'Search Articles'}
+        <button className="searchButton" type="submit" onClick={searchButton}>
+          {isSearching ? 'Clear Search' : 'Search Articles'}
         </button>
       </form>
     </div>
   );
+};
+
+SearchForm.propTypes = {
+  searchbox: PropTypes.string.isRequired,
+  handleTextInput: PropTypes.func.isRequired,
+  searchButton: PropTypes.func.isRequired,
+  isSearching: PropTypes.bool.isRequired,
 };
 
 export default SearchForm;

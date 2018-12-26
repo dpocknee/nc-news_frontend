@@ -1,23 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Router } from '@reach/router';
 import GroupOfArticles from './Articles/GroupOfArticles';
 import IndividualArticle from './Articles/IndividualArticle';
 import User from './User/User';
 import BadRequest from './BadRequest';
 import NotFound from './NotFound';
-import { Router } from '@reach/router';
 
 const MainWindow = props => {
+  const { searchInfo, loggedIn } = props;
   return (
     <main>
       <Router>
         <GroupOfArticles path="/" />
-        <GroupOfArticles path="/articles" searchInfo={props.searchInfo} />
+        <GroupOfArticles path="/articles" searchInfo={searchInfo} loggedIn={loggedIn} />
         <GroupOfArticles
-          path="/topics/:topic_slug/articles"
-          searchInfo={props.searchInfo}
+          path="/topics/:topicSlug/articles"
+          searchInfo={searchInfo}
+          loggedIn={loggedIn}
         />
-        <IndividualArticle path="/articles/:article_id" />
+        <IndividualArticle path="/articles/:articleId" loggedIn={loggedIn} />
         <User path="/users/:username" />
         <BadRequest path="/error" />
         <NotFound default />
@@ -27,8 +29,12 @@ const MainWindow = props => {
 };
 
 MainWindow.propTypes = {
-  searchInfo: PropTypes.object,
-  login: PropTypes.function
+  searchInfo: PropTypes.string,
+  loggedIn: PropTypes.bool.isRequired,
+};
+
+MainWindow.defaultProps = {
+  searchInfo: null,
 };
 
 export default MainWindow;

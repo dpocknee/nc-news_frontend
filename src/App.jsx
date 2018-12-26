@@ -5,27 +5,30 @@ import MainWindow from './components/MainWindow';
 
 class App extends Component {
   state = {
-    topics: [],
     searchInfo: null,
-    logged: false
+    loggedIn: false,
   };
-  render() {
-    return (
-      <div className="App">
-        <Navbar searchHandler={this.searchHandler} login={this.login} />
-        <MainWindow searchInfo={this.state.searchInfo} login={this.login} />
-      </div>
-    );
-  }
+
   searchHandler = (event, searchInfo) => {
     event.preventDefault();
     this.setState({
-      searchInfo: searchInfo
+      searchInfo,
     });
   };
+
   login = status => {
-    this.setState({ logged: status });
+    this.setState({ loggedIn: status });
   };
+
+  render() {
+    const { searchInfo, loggedIn } = this.state;
+    return (
+      <div className="App">
+        <Navbar searchHandler={this.searchHandler} login={this.login} />
+        <MainWindow searchInfo={searchInfo} loggedIn={loggedIn} />
+      </div>
+    );
+  }
 }
 
 export default App;
